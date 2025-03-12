@@ -41,7 +41,6 @@ class Character extends MoveableObject {
         'assets/images/charakter/idle/green__0000_idle_1.png',
         'assets/images/charakter/idle/green__0001_idle_2.png',
         'assets/images/charakter/idle/green__0002_idle_3.png',
-
     ];
 
 
