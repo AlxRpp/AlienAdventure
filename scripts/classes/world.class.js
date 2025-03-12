@@ -12,7 +12,7 @@ class World {
     amountBottle = 0;
     amountCoin = 0;
     collectedBottles = 0;
-    newMoveOBJ = new MoveableObject()
+    // newMoveOBJ = new MoveableObject()
 
 
 
@@ -78,7 +78,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrownObjects();
-        }, 50)
+        }, 100)
     }
 
 
@@ -89,12 +89,12 @@ class World {
     }
 
     charakterEnemyCollision() {
-        this.level.enemies.forEach((enemy) => {
+        this.level.enemies.forEach((enemy, index) => {
             if (this.character.isColliding(enemy)) {
                 if (this.character.y + this.character.height <= enemy.y) {
-                    this.characterJumpCollision();
+                    this.killEnemy(enemy, index);
                 }
-                if (!this.newMoveOBJ.enemyDead) {
+                if (!enemy.enemyDead) {
                     this.character.hit();
                     this.statusbar.setPercentage(this.character.energy);
                 }
@@ -102,18 +102,17 @@ class World {
         });
     }
 
-    characterJumpCollision() {
-        this.level.enemies.forEach((enemy, index)=>{
-            if (this.character.isColliding(enemy)) {
-                enemy.stopAnimation();
-                enemy.loadImage(enemy.images_Dead);
-                this.newMoveOBJ.enemyDead = true;
-                setTimeout(() => {
-                    enemy.loadImage(enemy.images_Empty);
-                    this.level.enemies.splice(index, 1)
-                }, 1000)
-            }
-        })
+    killEnemy(enemy,index) {
+        if (this.character.isColliding(enemy)) {
+            enemy.stopAnimation();
+            enemy.loadImage(enemy.images_Dead);
+            // this.newMoveOBJ.enemyDead = true;
+            enemy.enemyDead = true;
+            setTimeout(() => {
+                enemy.loadImage(enemy.images_Empty);
+                this.level.enemies.splice(index, 1)
+            }, 1000)
+        }
     }
 
     characterCoinCollision() {
@@ -137,7 +136,7 @@ class World {
         });
     }
 
-    
+
 
 
     checkThrownObjects() {
@@ -179,7 +178,7 @@ class World {
                         this.splashBottle(thrownBottle)
                         enemy.stopAnimation();
                         enemy.loadImage(enemy.images_Dead);
-                        this.newMoveOBJ.enemyDead = true;
+                        enemy.enemyDead = true;
                         setTimeout(() => {
                             enemy.loadImage(enemy.images_Empty);
                             this.level.enemies.splice(index, 1)
