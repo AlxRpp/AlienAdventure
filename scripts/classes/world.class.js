@@ -11,7 +11,7 @@ class World {
     bottleStatusbar = new BottleStatusbar();
     amount = 0;
     collectedBottles = 0;
-    test = new MoveableObject()
+    newMoveOBJ = new MoveableObject()
 
 
 
@@ -91,8 +91,10 @@ class World {
     charakterEnemyCollision() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusbar.setPercentage(this.character.energy);
+                if (!this.newMoveOBJ.enemyDead) {
+                    this.character.hit();
+                    this.statusbar.setPercentage(this.character.energy); 
+                }
             }
         });
     }
@@ -161,7 +163,7 @@ class World {
                         console.log("Bottle hit enemy", enemy);
                         enemy.stopAnimation();
                         enemy.loadImage(enemy.images_Dead);
-                        this.test.enemyDead = true;
+                        this.newMoveOBJ.enemyDead = true;
                         setTimeout(() => {
                             enemy.loadImage(enemy.images_Empty);
                             this.level.enemies.splice(index, 1)
