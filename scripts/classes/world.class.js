@@ -43,8 +43,8 @@ class World {
         this.addItemToCanvas(this.bottleStatusbar);
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
 
-        this.addItemToCanvas(this.character);
         this.addObjectToCanvas(this.level.enemies);
+        this.addItemToCanvas(this.character);
         this.addObjectToCanvas(this.level.coins);
         this.addObjectToCanvas(this.level.bottles);
         this.addObjectToCanvas(this.level.throwableObjects);

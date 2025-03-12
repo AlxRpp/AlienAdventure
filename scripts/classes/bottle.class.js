@@ -16,9 +16,9 @@ class Bottle extends DrawableObject {
     }
 
 
-    animate() {
-        setInterval(() => {
-            this.playAnimation(this.images_Coins);
-        }, 350);
-    }
+    // animate() {
+    //     setInterval(() => {
+    //         this.playAnimation(this.images_Coins);
+    //     }, 350);
+    // }
 }
