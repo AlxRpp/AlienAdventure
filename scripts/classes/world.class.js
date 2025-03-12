@@ -54,16 +54,16 @@ class World {
     addObjectToCanvas(object) {
         object.forEach(movableObject => {
             this.addItemToCanvas(movableObject);
-            movableObject.drawFrame(this.ctx)
+            // movableObject.drawFrame(this.ctx)
         })
     }
 
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
-            movableOBJ.drawFrame(this.ctx)
+            // movableOBJ.drawFrame(this.ctx)
             movableOBJ.mirroredImage(this.ctx);
         } else {
-            movableOBJ.drawFrame(this.ctx)
+            // movableOBJ.drawFrame(this.ctx)
             movableOBJ.draw(this.ctx)
         }
     }
@@ -96,12 +96,14 @@ class World {
         });
     }
 
-    killEnemy(enemy,index) {
+    killEnemy(enemy, index) {
         if (this.character.isColliding(enemy)) {
             enemy.stopAnimation();
             enemy.loadImage(enemy.images_Dead);
-            enemy.enemyDead = true;
-            this.character.jump();
+            if (!enemy.enemyDead) {
+                this.character.jump();
+                enemy.enemyDead = true;
+            }
             setTimeout(() => {
                 enemy.loadImage(enemy.images_Empty);
                 this.level.enemies.splice(index, 1)
@@ -130,7 +132,6 @@ class World {
                 }
             });
         }
-  
     }
 
     checkThrownObjects() {
