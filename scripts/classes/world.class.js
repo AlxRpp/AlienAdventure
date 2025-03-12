@@ -12,9 +12,6 @@ class World {
     amountBottle = 0;
     amountCoin = 0;
     collectedBottles = 0;
-    // newMoveOBJ = new MoveableObject()
-
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -28,7 +25,6 @@ class World {
     setWorld() {
         this.character.world = this;
     }
-
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -55,14 +51,12 @@ class World {
         })
     }
 
-
     addObjectToCanvas(object) {
         object.forEach(movableObject => {
             this.addItemToCanvas(movableObject);
             movableObject.drawFrame(this.ctx)
         })
     }
-
 
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
@@ -106,8 +100,8 @@ class World {
         if (this.character.isColliding(enemy)) {
             enemy.stopAnimation();
             enemy.loadImage(enemy.images_Dead);
-            // this.newMoveOBJ.enemyDead = true;
             enemy.enemyDead = true;
+            this.character.jump();
             setTimeout(() => {
                 enemy.loadImage(enemy.images_Empty);
                 this.level.enemies.splice(index, 1)
@@ -135,9 +129,6 @@ class World {
             }
         });
     }
-
-
-
 
     checkThrownObjects() {
         if (this.collectedBottles > 0) {
@@ -168,7 +159,6 @@ class World {
         }
         this.splashBottle(thrownBottle);
     };
-
 
     bottleEnemyCollision(thrownBottle) {
         setInterval(() => {
@@ -201,12 +191,5 @@ class World {
                 }, 200)
             }
         }, 250)
-
     };
-
-
 }
-
-
-
-
