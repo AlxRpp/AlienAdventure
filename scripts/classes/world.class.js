@@ -120,14 +120,17 @@ class World {
     }
 
     characterBottleCollision() {
-        this.level.bottles.forEach((bottle, index) => {
-            if (this.character.isColliding(bottle)) {
-                this.amountBottle += 20;
-                this.level.bottles.splice(index, 1)
-                this.bottleStatusbar.setPercentage(this.amountBottle);
-                this.collectedBottles++;
-            }
-        });
+        if (this.amountBottle < 100) {
+            this.level.bottles.forEach((bottle, index) => {
+                if (this.character.isColliding(bottle)) {
+                    this.amountBottle += 20;
+                    this.level.bottles.splice(index, 1)
+                    this.bottleStatusbar.setPercentage(this.amountBottle);
+                    this.collectedBottles++;
+                }
+            });
+        }
+  
     }
 
     checkThrownObjects() {
