@@ -7,12 +7,11 @@ class Bottle extends DrawableObject {
         right: 0,
         bottom: 0
     };
-
     
-    constructor(x, y) {
+    constructor() {
         super().loadImage('assets/images/6_salsa_bottle/1_salsa_bottle_on_ground.png');
-        this.x = x;
-        this.y = y;
+        this.x = 300 + Math.random() * 2500 
+        this.y = 380
         // this.animate();
     }
 

@@ -9,7 +9,8 @@ class World {
     statusbar = new Statusbar();
     coinStatusbar = new CoinStatusbar();
     bottleStatusbar = new BottleStatusbar();
-    amount = 0;
+    amountBottle = 0;
+    amountCoin = 0;
     collectedBottles = 0;
     newMoveOBJ = new MoveableObject()
 
@@ -118,9 +119,9 @@ class World {
     characterCoinCollision() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
-                this.amount += 10;
+                this.amountCoin += 20;
                 this.level.coins.splice(index, 1)
-                this.coinStatusbar.setPercentage(this.amount)
+                this.coinStatusbar.setPercentage(this.amountCoin)
             }
         });
     }
@@ -128,13 +129,16 @@ class World {
     characterBottleCollision() {
         this.level.bottles.forEach((bottle, index) => {
             if (this.character.isColliding(bottle)) {
-                this.amount += 20;
+                this.amountBottle += 20;
                 this.level.bottles.splice(index, 1)
-                this.bottleStatusbar.setPercentage(this.amount);
+                this.bottleStatusbar.setPercentage(this.amountBottle);
                 this.collectedBottles++;
             }
         });
     }
+
+    
+
 
     checkThrownObjects() {
         if (this.collectedBottles > 0) {
@@ -158,8 +162,8 @@ class World {
     throwBottle(thrownBottle) {
         this.level.throwableObjects.push(thrownBottle);
         this.collectedBottles--;
-        this.amount -= 20;
-        this.bottleStatusbar.setPercentage(this.amount);
+        this.amountBottle -= 20;
+        this.bottleStatusbar.setPercentage(this.amountBottle);
         if (this.collectedBottles < 0) {
             this.collectedBottles = 0;
         }

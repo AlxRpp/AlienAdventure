@@ -5,31 +5,31 @@ const level1 = new Level(
         // new Chicken(),
         // new Chicken(),
         // new Chicken(),
-        new Chicken(),
+        // new Chicken(),
         new Endboss()
     ],
     [
         new Clouds('./assets/images/background/4_clouds/1.png'),
     ],
     [
-        new Coins(450, 350),
-        new Coins(450, 200),
-        new Coins(550, 150),
-        new Coins(650, 200),
-        new Coins(650, 250),
-        new Coins(1450, 250),
-        new Coins(1500, 200),
-        new Coins(1550, 150),
-        new Coins(1600, 200),
-        new Coins(1650, 250),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+        new Coins(),
+
     ],
     [
-        new Bottle(300, 400),
-        new Bottle(500, 400),
-        new Bottle(700, 400),
-        new Bottle(900, 400),
-        new Bottle(1100, 400),
-
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
     ],
     [
         // ThrowableObjects
