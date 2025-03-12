@@ -1,5 +1,6 @@
 const level1 = new Level(
     [
+        new Endboss(),
         // new SmallChicken(),
         // new Chicken(),
         // new SmallChicken(),
@@ -12,8 +13,7 @@ const level1 = new Level(
         // new SmallChicken(),
         // new Chicken(),
         // new Chicken(),
-        // new SmallChicken(),
-        new Endboss()
+        // new SmallChicken()
     ],
     [
         new Clouds('./assets/images/background/4_clouds/1.png'),

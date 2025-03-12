@@ -60,7 +60,7 @@ class World {
 
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
-            // movableOBJ.drawFrame(this.ctx)
+            movableOBJ.drawFrame(this.ctx)
             movableOBJ.mirroredImage(this.ctx);
         } else {
             // movableOBJ.drawFrame(this.ctx)
@@ -72,6 +72,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrownObjects();
+            this.animateEndboss();
         }, 100)
     }
 
@@ -196,4 +197,11 @@ class World {
             }
         }, 250)
     };
+
+    animateEndboss(){
+        let x = this.character.x;
+       if (x > 3000) {
+            this.level.enemies[0].animate();
+       } 
+    }
 }
