@@ -77,7 +77,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrownObjects();
-        }, 100)
+        }, 50)
     }
 
 
@@ -87,16 +87,32 @@ class World {
         this.characterCoinCollision();
     }
 
-
     charakterEnemyCollision() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
+                if (this.character.y + this.character.height <= enemy.y) {
+                    this.characterJumpCollision();
+                }
                 if (!this.newMoveOBJ.enemyDead) {
                     this.character.hit();
-                    this.statusbar.setPercentage(this.character.energy); 
+                    this.statusbar.setPercentage(this.character.energy);
                 }
             }
         });
+    }
+
+    characterJumpCollision() {
+        this.level.enemies.forEach((enemy, index)=>{
+            if (this.character.isColliding(enemy)) {
+                enemy.stopAnimation();
+                enemy.loadImage(enemy.images_Dead);
+                this.newMoveOBJ.enemyDead = true;
+                setTimeout(() => {
+                    enemy.loadImage(enemy.images_Empty);
+                    this.level.enemies.splice(index, 1)
+                }, 1000)
+            }
+        })
     }
 
     characterCoinCollision() {
@@ -157,7 +173,6 @@ class World {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy)) {
                         this.splashBottle(thrownBottle)
-                        console.log("Bottle hit enemy", enemy);
                         enemy.stopAnimation();
                         enemy.loadImage(enemy.images_Dead);
                         this.newMoveOBJ.enemyDead = true;
