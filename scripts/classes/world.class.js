@@ -201,6 +201,8 @@ class World {
     animateEndboss(){
         let x = this.character.x;
        if (x > 3000) {
+            console.log("Hier wird die animation abgespielt");
+            
             this.level.enemies[0].animate();
        } 
     }

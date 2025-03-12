@@ -3,6 +3,7 @@ class Endboss extends MoveableObject {
     height = 525;
     width = 525;
     otherDirection = true;
+    animationPlayed = false;
     offset = {
         top: 0,
         left: 220,
@@ -28,7 +29,7 @@ class Endboss extends MoveableObject {
         'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_014.png',
         'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_015.png',
         'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_016.png',
-        'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_017.png',       
+        'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_017.png',
     ];
     images_Slashing = [
         'assets/images/Endboss/Slashing/0_Elemental_Spirits_Slashing_000.png',
@@ -45,18 +46,18 @@ class Endboss extends MoveableObject {
         'assets/images/Endboss/Slashing/0_Elemental_Spirits_Slashing_011.png',
     ];
     images_running = [
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_000.png',
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_001.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_002.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_003.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_004.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_005.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_006.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_007.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_008.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_009.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_010.png', 
-       'assets/images/Endboss/Running/0_Elemental_Spirits_Running_011.png', 
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_000.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_001.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_002.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_003.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_004.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_005.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_006.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_007.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_008.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_009.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_010.png',
+        'assets/images/Endboss/Running/0_Elemental_Spirits_Running_011.png',
     ];
     images_HURT = [
         'assets/images/Endboss/Hurt/0_Elemental_Spirits_Hurt_000.png',
@@ -100,19 +101,39 @@ class Endboss extends MoveableObject {
         super().loadImage(this.images_IDLE[0]);
         this.loadImages(this.images_IDLE);
         this.loadImages(this.images_SLIDING);
+        this.loadImages(this.images_Slashing);
+        this.loadImages(this.images_running);
+        this.loadImages(this.images_HURT);
+        this.loadImages(this.images_DEAD);
         this.x = 4000;
-        //this.animate()
-
     }
+
     animate() {
-        setInterval(() => {
-            this.playAnimation(this.images_SLIDING);
-            this.x -= 25
-        }, 50);
+        if (this.animationPlayed) {
+            return
+        } else {
+            this.slideInterval = setInterval(() => {
+                this.playAnimation(this.images_SLIDING);
+                this.x -= 25
+                if (this.x < 3100) {
+                    this.x = 3100;
+                    
+                    this.endbossRun();
+                }
+            }, 1000 / 60);
+            this.animationPlayed = true
+        }
+
+
     }
 
-    runTestAnimation(){
-        console.log("das ist der hammer es funktioniert :)");
-        
+    endbossRun() {
+        clearInterval(this.slideInterval);
+         this.attack = setInterval(() => {
+            this.playAnimation(this.images_Slashing);
+        }, 100)
+
     }
+
 }
+
