@@ -120,7 +120,6 @@ class World {
         });
     }
 
-
     checkThrownObjects() {
         if (this.collectedBottles > 0) {
             this.throwObjects();
@@ -137,8 +136,6 @@ class World {
             let thrownBottle = new ThrowableObject(this.character.x + 40, this.character.y - 30, false);
             this.throwBottle(thrownBottle);
             this.bottleEnemyCollision(thrownBottle);
-
-
         }
     }
 
@@ -176,16 +173,16 @@ class World {
     };
 
     splashBottle(bottle) {
-        setInterval(() => {
-            if (bottle.y > 350) {
-                bottle.y = 400;
+        this.splashIntervall = setInterval(() => {
+            if (bottle.y > 360) {
+                bottle.y = 360;
                 bottle.playAnimation(bottle.images_BottleSplash);
+                clearInterval(this.splashIntervall)
                 setTimeout(() => {
                     this.level.throwableObjects.splice(bottle, 1)
-
-                }, 1000)
+                }, 200)
             }
-        }, 100)
+        }, 250)
 
     };
 
