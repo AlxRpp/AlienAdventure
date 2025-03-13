@@ -60,7 +60,7 @@ class World {
 
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
-            movableOBJ.drawFrame(this.ctx)
+            //movableOBJ.drawFrame(this.ctx)
             movableOBJ.mirroredImage(this.ctx);
         } else {
             // movableOBJ.drawFrame(this.ctx)

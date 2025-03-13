@@ -148,12 +148,14 @@ class Endboss extends MoveableObject {
                 this.x = character.x
                 world.level.level_end_x = this.x + 150;
             }
-        }, 100) // intervall
-        this.runLeft()
+        }, 100)
+        setTimeout(() => {
+            this.runLeft()
+        }, 100);
     }
 
     runLeft() {
-       // this.offset.left = 190
+        // this.offset.left = 190
         clearInterval(this.follow)
         setTimeout(() => {
             this.MoveIntervall = setInterval(() => {
