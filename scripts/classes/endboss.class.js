@@ -199,7 +199,7 @@ class Endboss extends MoveableObject {
             this.resetIntervall();
             this.Damage = setInterval(() => {
                 this.playAnimation(this.images_HURT);
-            }, 250);
+            }, 100);
             this.hurt = false;
             this.bossEnergy -= 20;
             console.log("Boss Energy:", this.bossEnergy);
