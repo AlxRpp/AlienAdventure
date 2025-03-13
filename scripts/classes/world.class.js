@@ -166,24 +166,33 @@ class World {
     };
 
     bottleEnemyCollision(thrownBottle) {
-        setInterval(() => {
+        this.BotlleCollision = setInterval(() => {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy)) {
                         this.splashBottle(thrownBottle)
-                        enemy.stopAnimation();
-                        enemy.loadImage(enemy.images_Dead);
-                        enemy.enemyDead = true;
-                        setTimeout(() => {
-                            enemy.loadImage(enemy.images_Empty);
-                            this.level.enemies.splice(index, 1)
-                        }, 1000)
+                        if (!(enemy instanceof Endboss)) {
+                            this.hitEnemy(enemy, index)
+                        } else {
+                            this.hurtEndboss();
+                        }
                     }
                 })
             });
         }, 100)
 
     };
+
+
+    hitEnemy(enemy, index) {
+        enemy.stopAnimation();
+        enemy.loadImage(enemy.images_Dead);
+        enemy.enemyDead = true;
+        setTimeout(() => {
+            enemy.loadImage(enemy.images_Empty);
+            this.level.enemies.splice(index, 1)
+        }, 1000)
+    }
 
     splashBottle(bottle) {
         this.splashIntervall = setInterval(() => {
@@ -203,5 +212,11 @@ class World {
         if (x > 3000) {
             this.level.enemies[0].animate();
         }
+    }
+
+    hurtEndboss() {
+        this.level.enemies[0].hurt = true;
+        this.level.enemies[0].takeDamage();
+        clearInterval(this.BotlleCollision);
     }
 }

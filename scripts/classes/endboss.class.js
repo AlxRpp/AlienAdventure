@@ -11,6 +11,8 @@ class Endboss extends MoveableObject {
         bottom: 0
     };
     speed = 1.5;
+    bossEnergy = 100;
+    hurt = false;
 
 
     images_IDLE = [
@@ -127,6 +129,7 @@ class Endboss extends MoveableObject {
     }
 
     attackCharacter() {
+        clearInterval(this.Damage);
         this.resetIntervall();
         this.offset.left = 50;
         clearInterval(this.slideInterval);
@@ -142,6 +145,7 @@ class Endboss extends MoveableObject {
 
 
     followCharacter() {
+        clearInterval(this.Damage);
         let character = world.character;
         this.follow = setInterval(() => {
             if (character.x < this.x) {
@@ -155,8 +159,8 @@ class Endboss extends MoveableObject {
     }
 
     runLeft() {
-        // this.offset.left = 190
-        clearInterval(this.follow)
+        clearInterval(this.Damage);
+        clearInterval(this.follow);
         setTimeout(() => {
             this.MoveIntervall = setInterval(() => {
                 this.moveLeft();
@@ -185,6 +189,21 @@ class Endboss extends MoveableObject {
         let gap = endboss - character;
         if (gap < 100 && gap > -200) {
             this.attackCharacter();
+        }
+    }
+
+    takeDamage() {
+        if (!this.hurt) {
+            return
+        } else {
+            this.resetIntervall();
+            this.Damage = setInterval(() => {
+                this.playAnimation(this.images_HURT);
+                clearInterval(this.Damage)
+            }, 300);
+            this.hurt = false;
+            this.bossEnergy = this.bossEnergy - 20;
+            console.log(this.bossEnergy);
         }
     }
 }
