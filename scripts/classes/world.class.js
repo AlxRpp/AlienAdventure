@@ -144,7 +144,7 @@ class World {
 
     throwObjects() {
         let now = Date.now();
-        if (now - this.lastThrowTime < 250) {
+        if (now - this.lastThrowTime < 125) {
             return
         }
         this.lastThrowTime = now;
@@ -227,8 +227,8 @@ class World {
     }
 
     hurtEndboss() {
-        this.level.enemies[0].hurt = true;
-        this.level.enemies[0].takeDamage();
-        clearInterval(this.BotlleCollision);
-    }
+            this.level.enemies[0].takeDamage();
+            clearInterval(this.BotlleCollision);
+        }
+
 }
