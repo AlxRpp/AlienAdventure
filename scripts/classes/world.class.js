@@ -170,6 +170,9 @@ class World {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy)) {
+
+                        clearInterval(this.BotlleCollision);
+
                         this.splashBottle(thrownBottle)
                         if (!(enemy instanceof Endboss)) {
                             this.hitEnemy(enemy, index)
@@ -201,7 +204,10 @@ class World {
                 bottle.playAnimation(bottle.images_BottleSplash);
                 clearInterval(this.splashIntervall)
                 setTimeout(() => {
-                    this.level.throwableObjects.splice(bottle, 1)
+                    let index = this.level.throwableObjects.indexOf(bottle);
+                    if (index > -1) {
+                        this.level.throwableObjects.splice(index, 1)
+                    }
                 }, 200)
             }
         }, 250)

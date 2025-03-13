@@ -98,8 +98,8 @@ class Endboss extends MoveableObject {
         'assets/images/Endboss/Sliding/0_Elemental_Spirits_Sliding_003.png',
         'assets/images/Endboss/Sliding/0_Elemental_Spirits_Sliding_004.png',
         'assets/images/Endboss/Sliding/0_Elemental_Spirits_Sliding_005.png',
-
     ];
+    images_Empty = "";
 
     constructor() {
         super().loadImage(this.images_IDLE[0]);
@@ -199,12 +199,30 @@ class Endboss extends MoveableObject {
             this.resetIntervall();
             this.Damage = setInterval(() => {
                 this.playAnimation(this.images_HURT);
-                clearInterval(this.Damage)
-            }, 300);
+            }, 250);
             this.hurt = false;
-            this.bossEnergy = this.bossEnergy - 20;
+            this.bossEnergy -= 20;
             console.log(this.bossEnergy);
+            if (this.bossEnergy <= 0) {
+                this.bossDead();
+            }
         }
+    }
+
+    bossDead() {
+        clearInterval(this.slideInterval);
+        clearInterval(this.attack);
+        clearInterval(this.Damage);
+        clearInterval(this.follow);
+        this.resetIntervall();
+        this.dead = setInterval(() => {
+            this.playAnimation(this.images_DEAD)
+        }, 100)
+        setTimeout(() => {
+            clearInterval(this.dead);
+            this.loadImage(this.images_Empty);
+        }, 1000);
+
     }
 }
 
