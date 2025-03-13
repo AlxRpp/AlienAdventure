@@ -10,6 +10,8 @@ class Endboss extends MoveableObject {
         right: 0,
         bottom: 0
     };
+    speed = 1.5;
+
 
     images_IDLE = [
         'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_000.png',
@@ -125,7 +127,8 @@ class Endboss extends MoveableObject {
     }
 
     attackCharacter() {
-        this.offset.left = 75
+        this.resetIntervall();
+        this.offset.left = 50;
         clearInterval(this.slideInterval);
         let startFrame = this.currentImage;
         this.attack = setInterval(() => {
@@ -140,29 +143,48 @@ class Endboss extends MoveableObject {
 
     followCharacter() {
         let character = world.character;
-       this.follow = setInterval(() => {
+        this.follow = setInterval(() => {
             if (character.x < this.x) {
                 this.x = character.x
                 world.level.level_end_x = this.x + 150;
             }
-        }, 1000) // intervall
+        }, 100) // intervall
         this.runLeft()
     }
 
     runLeft() {
-        this.offset.left = 190
+       // this.offset.left = 190
         clearInterval(this.follow)
         setTimeout(() => {
             this.MoveIntervall = setInterval(() => {
                 this.moveLeft();
-            }, 15);
-
+                this.offset.left = 190
+            }, 1000 / 60);
             this.AnimateIntervall = setInterval(() => {
                 this.playAnimation(this.images_running)
             }, 40);
+            this.thinkIntervall = setInterval(() => {
+                this.checkDistance()
+            }, 250)
+
         }, 750)
     }
 
+    resetIntervall() {
+        clearInterval(this.MoveIntervall);
+        clearInterval(this.AnimateIntervall);
+        clearInterval(this.thinkIntervall);
+    }
+
+    checkDistance() {
+        this.offset.left = 50
+        let character = world.character.x;
+        let endboss = this.x;
+        let gap = endboss - character;
+        if (gap < 100 && gap > -200) {
+            this.attackCharacter();
+        }
+    }
 }
 
 
