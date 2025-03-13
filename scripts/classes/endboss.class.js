@@ -11,13 +11,11 @@ class Endboss extends MoveableObject {
     };
     speed = 1.5;
     bossEnergy = 100;
-    // hurt = false;
     hurtAnimation = false;
     animationPlayed = false;
     state = {
         attack: false,
         hurted: false,
-        // slashing: false,
         follow: false,
         dead: false,
         run: false
@@ -222,10 +220,7 @@ class Endboss extends MoveableObject {
         }
         else {
             this.resetIntervall();
-
             this.playHurtAnimation();
-
-            // this.hurt = false;
             this.bossEnergy -= 20;
             console.log("Boss Energy:", this.bossEnergy);
             if (this.bossEnergy <= 0) {
@@ -278,7 +273,6 @@ class Endboss extends MoveableObject {
             this.state = {
                 attack: false,
                 hurted: false,
-                // slashing: false,
                 follow: false,
                 dead: false,
                 run: false
