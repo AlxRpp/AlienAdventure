@@ -12,6 +12,7 @@ class World {
     amountBottle = 0;
     amountCoin = 0;
     collectedBottles = 0;
+    lastThrowTime = 0;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -142,6 +143,11 @@ class World {
     }
 
     throwObjects() {
+        let now = Date.now();
+        if (now - this.lastThrowTime < 250) {
+            return
+        }
+        this.lastThrowTime = now;
         if (this.keyboard.d && this.character.otherDirection) {
             let thrownBottle = new ThrowableObject(this.character.x - 40, this.character.y - 30, true);
             this.throwBottle(thrownBottle);

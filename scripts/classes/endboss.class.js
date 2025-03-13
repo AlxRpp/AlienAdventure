@@ -202,8 +202,9 @@ class Endboss extends MoveableObject {
             }, 250);
             this.hurt = false;
             this.bossEnergy -= 20;
-            console.log(this.bossEnergy);
+            console.log("Boss Energy:", this.bossEnergy);
             if (this.bossEnergy <= 0) {
+                this.bossEnergy = 0;
                 this.bossDead();
             }
         }
