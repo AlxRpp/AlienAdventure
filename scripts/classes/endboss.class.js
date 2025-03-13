@@ -1,12 +1,12 @@
 class Endboss extends MoveableObject {
-    y = 15;
+    y = 25;
     height = 525;
     width = 525;
     otherDirection = true;
     animationPlayed = false;
     offset = {
         top: 0,
-        left: 220,
+        left: 0,
         right: 0,
         bottom: 0
     };
@@ -115,25 +115,54 @@ class Endboss extends MoveableObject {
             this.slideInterval = setInterval(() => {
                 this.playAnimation(this.images_SLIDING);
                 this.x -= 25
-                if (this.x < 3100) {
-                    this.x = 3100;
-                    
-                    this.endbossRun();
+                if (this.x < 3050) {
+                    this.x = 3050;
+                    this.attackCharacter();
                 }
             }, 1000 / 60);
             this.animationPlayed = true
         }
-
-
     }
 
-    endbossRun() {
+    attackCharacter() {
+        this.offset.left = 75
         clearInterval(this.slideInterval);
-         this.attack = setInterval(() => {
+        let startFrame = this.currentImage;
+        this.attack = setInterval(() => {
             this.playAnimation(this.images_Slashing);
+            if (this.currentImage - startFrame >= this.images_Slashing.length) {
+                clearInterval(this.attack)
+            }
         }, 100)
+        this.followCharacter();
+    }
 
+
+    followCharacter() {
+        let character = world.character;
+       this.follow = setInterval(() => {
+            if (character.x < this.x) {
+                this.x = character.x
+                world.level.level_end_x = this.x + 150;
+            }
+        }, 1000) // intervall
+        this.runLeft()
+    }
+
+    runLeft() {
+        this.offset.left = 190
+        clearInterval(this.follow)
+        setTimeout(() => {
+            this.MoveIntervall = setInterval(() => {
+                this.moveLeft();
+            }, 15);
+
+            this.AnimateIntervall = setInterval(() => {
+                this.playAnimation(this.images_running)
+            }, 40);
+        }, 750)
     }
 
 }
+
 

@@ -198,12 +198,10 @@ class World {
         }, 250)
     };
 
-    animateEndboss(){
+    animateEndboss() {
         let x = this.character.x;
-       if (x > 3000) {
-            console.log("Hier wird die animation abgespielt");
-            
+        if (x > 3000) {
             this.level.enemies[0].animate();
-       } 
+        }
     }
 }
