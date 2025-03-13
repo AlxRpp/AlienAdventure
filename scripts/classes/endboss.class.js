@@ -151,7 +151,7 @@ class Endboss extends MoveableObject {
                 }
             }, 100)
             this.followCharacter();
-            this.state.attack = true
+            //this.state.attack = true
         }
     }
 
@@ -171,7 +171,7 @@ class Endboss extends MoveableObject {
             setTimeout(() => {
                 this.runLeft()
             }, 100);
-            this.state.follow = true
+            // this.state.follow = true
         }
     }
 
@@ -215,7 +215,7 @@ class Endboss extends MoveableObject {
     }
 
     takeDamage() {
-        if (this.state.hurted) {
+        if (this.state.hurted && (!this.state.dead)) {
             return
         }
         else {
