@@ -58,11 +58,13 @@ class Character extends MoveableObject {
     }
 
 
-
-
-
-
     animate() {
+        this.movement();
+        this.status();
+    }
+
+
+    movement() {
         setInterval(() => {
             if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
                 this.otherDirection = false;
@@ -77,7 +79,10 @@ class Character extends MoveableObject {
             }
             this.world.camera_x = -this.x + 75;
         }, 1000 / 60)
+    }
 
+
+    status() {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.images_dead);
@@ -88,18 +93,20 @@ class Character extends MoveableObject {
             } else if (this.world.keyboard.right || this.world.keyboard.left) {
                 this.playAnimation(this.images_Walking);
             } else {
-               
+                setTimeout(() => {
+                    this.idleCharacter();
+                }, 5000)
             }
         }, 100);
 
-        // setTimeout(()=>{
-        //     setInterval(()=>{
-        //     this.playAnimation(this.images_idle);
-
-        //     }, 150)
-        // }, 1500)
     }
 
 
-
+    idleCharacter() {
+        if ((!this.world.keyboard.right) &&
+            (!this.world.keyboard.left) &&
+            (!this.world.keyboard.space)) {
+            this.playAnimation(this.images_idle)
+        };
+    }
 }
