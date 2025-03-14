@@ -32,21 +32,19 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectToCanvas(this.level.backgrounds);
         this.addObjectToCanvas(this.level.clouds);
-
         this.ctx.translate(-this.camera_x, 0); // Camera Backwarts
-        // Space for fixed Elements
-        this.addItemToCanvas(this.statusbar);
-        this.addItemToCanvas(this.coinStatusbar);
-        this.addItemToCanvas(this.bottleStatusbar);
+            // Space for fixed Elements
+            this.addItemToCanvas(this.statusbar);
+            this.addItemToCanvas(this.coinStatusbar);
+            this.addItemToCanvas(this.bottleStatusbar);
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
-
         this.addObjectToCanvas(this.level.enemies);
         this.addItemToCanvas(this.character);
         this.addObjectToCanvas(this.level.coins);
         this.addObjectToCanvas(this.level.bottles);
         this.addObjectToCanvas(this.level.throwableObjects);
-
         this.ctx.translate(-this.camera_x, 0);
+
         requestAnimationFrame(() => {
             this.draw();
         })
