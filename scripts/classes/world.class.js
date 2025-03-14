@@ -176,9 +176,7 @@ class World {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy)) {
-
                         clearInterval(this.BotlleCollision);
-
                         this.splashBottle(thrownBottle)
                         if (!(enemy instanceof Endboss)) {
                             this.hitEnemy(enemy, index)
@@ -191,7 +189,6 @@ class World {
         }, 100)
 
     };
-
 
     hitEnemy(enemy, index) {
         enemy.stopAnimation();
