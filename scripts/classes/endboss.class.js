@@ -150,8 +150,12 @@ class Endboss extends MoveableObject {
                     clearInterval(this.attack)
                 }
             }, 100)
-            this.followCharacter();
-            //this.state.attack = true
+            // this.state.follow = false
+
+            // this.followCharacter();
+            this.runLeft();
+            this.state.attack = true
+
         }
     }
 
@@ -162,16 +166,18 @@ class Endboss extends MoveableObject {
         } else {
             clearInterval(this.Damage);
             let character = world.character;
-            this.follow = setInterval(() => {
-                if (character.x < this.x) {
-                    this.x = character.x
-                    world.level.level_end_x = this.x + 150;
-                }
-            }, 100)
-            setTimeout(() => {
+            // this.follow = setInterval(() => {
+            //     if (character.x < this.x) {
+            //         // this.x = character.x
+            //         // world.level.level_end_x = this.x + 150;
+            //         console.log("Ja hier ist der fehler");
+                    
+            //     }
+            // }, 100)
+            // setTimeout(() => {
                 this.runLeft()
-            }, 100);
-            // this.state.follow = true
+            // }, 100);
+             this.state.follow = true
         }
     }
 
@@ -210,6 +216,11 @@ class Endboss extends MoveableObject {
         let endboss = this.x;
         let gap = endboss - character;
         if (gap < 100 && gap > -200) {
+            this.state.attack = false
+            this.state.follow = false
+            this.state.run = false
+
+
             this.attackCharacter();
         }
     }
