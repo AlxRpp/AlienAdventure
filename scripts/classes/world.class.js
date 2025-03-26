@@ -33,10 +33,10 @@ class World {
         this.addObjectToCanvas(this.level.backgrounds);
         this.addObjectToCanvas(this.level.clouds);
         this.ctx.translate(-this.camera_x, 0); // Camera Backwarts
-            // Space for fixed Elements
-            this.addItemToCanvas(this.statusbar);
-            this.addItemToCanvas(this.coinStatusbar);
-            this.addItemToCanvas(this.bottleStatusbar);
+        // Space for fixed Elements
+        this.addItemToCanvas(this.statusbar);
+        this.addItemToCanvas(this.coinStatusbar);
+        this.addItemToCanvas(this.bottleStatusbar);
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
         this.addObjectToCanvas(this.level.enemies);
         this.addItemToCanvas(this.character);
@@ -222,8 +222,8 @@ class World {
     }
 
     hurtEndboss() {
-            this.level.enemies[0].takeDamage();
-            clearInterval(this.BotlleCollision);
-        }
+        this.level.enemies[0].state.hurted = true;
+        this.level.enemies[0].takeDamage();
+    }
 
 }
