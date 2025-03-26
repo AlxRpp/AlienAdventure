@@ -44,8 +44,6 @@ class Character extends MoveableObject {
     ];
 
 
-
-
     constructor() {
         super().loadImage('./assets/images/charakter/run/green__0012_run_1.png')
         this.loadImages(this.images_Walking);
