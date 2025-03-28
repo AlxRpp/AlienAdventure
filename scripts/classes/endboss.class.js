@@ -180,7 +180,7 @@ class Endboss extends MoveableObject {
         let character = world.character.x;
         let endboss = this.x;
         let gap = endboss - character;
-            if (gap < 100 && gap > -200) {
+            if (gap < 10 && gap > -200) {
                 this.state.attack = true;
                 return true
             } else{
