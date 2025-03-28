@@ -123,11 +123,6 @@ class Endboss extends MoveableObject {
 
 
     animate(){
-        this.status();
-    }
-
-
-    status() {
         setInterval(() => {
             if (this.state.dead) {
                 this.bossIsDead();
@@ -141,7 +136,6 @@ class Endboss extends MoveableObject {
                 this.bossIsRunning();
             }
         }, 100);
-
     }
 
 
@@ -172,6 +166,7 @@ class Endboss extends MoveableObject {
     bossIsRunning(){
         this.moveLeft();
         this.playAnimation(this.images_running);
+        this.dontRunThru();
     }
 
 
@@ -196,6 +191,11 @@ class Endboss extends MoveableObject {
                 this.bossEnergy = 0;
                 this.state.dead = true
             }
+        }
+
+        dontRunThru(){
+            let boss = this.x
+            world.level.level_end_x = boss
         }
 }
 
