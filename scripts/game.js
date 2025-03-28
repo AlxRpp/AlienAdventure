@@ -1,11 +1,19 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let intervallIds = [];
 
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-}
+};
+
+
+function setStoppableIntervall(fn, time){
+    let id = setInterval(fn, time);
+    intervallIds.push(id);
+};
+
 
 window.addEventListener("keydown", (event) => {
     if (event.keyCode == 39) {
@@ -38,10 +46,4 @@ window.addEventListener("keyup", (event) => {
     }
 }
 );
-
-
-
-
-
-
 
