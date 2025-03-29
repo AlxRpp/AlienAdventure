@@ -35,23 +35,22 @@ canvas {
 
 .startScreen {
     width: 1024px;
-    height: 480px;
+    aspect-ratio: 16/7.5;
+    /* height: 480px; */
     border-radius: 16px;
     position: absolute;
     top: 50%;
     transform: translateY(-43%);
+    background-image: url('./assets/images/9_intro_outro_screens/start/startscreen_2.png');
+    background-position: center;
+    background-size: cover;
+    display: block;
 
 }
 
 
-.BGImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-}
 
-.startGame{
+.startGame {
     border: none;
     background-color: lightgreen;
     padding: 12px 32px;
@@ -75,16 +74,14 @@ canvas {
         display: none;
     }
 
-    .startScreen{
+    .startScreen {
         width: 100%;
         border-radius: 0;
         transform: translateY(-50%);
+        /* background-size: contain; */
+        background-repeat: no-repeat;
     }
 
-    .BGImage {
-        border-radius: 0px;
-        object-fit: contain;
-    }
 
 }
 
@@ -98,16 +95,13 @@ canvas {
         display: none;
     }
 
-    .startScreen{
+    .startScreen {
         width: 100%;
         border-radius: 0;
         transform: translateY(-50%);
     }
 
-    .BGImage {
-        border-radius: 0px;
-        object-fit: cover;
-    }
+
 
 }
 
@@ -129,15 +123,5 @@ canvas {
         height: 100dvh;
         border-radius: 0;
     }
-    .BGImage {
-        border-radius: 0px;
-    }
+
 }
-
-/* @media only screen and (max-width: 850px) {
-    .BGImage {
-        object-fit: contain;
-        border-radius: 0px;
-    }
-} */
-
