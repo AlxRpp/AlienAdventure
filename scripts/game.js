@@ -6,10 +6,15 @@ let intervallIds = [];
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+
 };
 
 
-function setStoppableIntervall(fn, time){
+function startScreen() {
+    
+}
+
+function setStoppableIntervall(fn, time) {
     let id = setInterval(fn, time);
     intervallIds.push(id);
 };

@@ -32,26 +32,102 @@ canvas {
 
 
 
-@media only screen and (max-width: 1024px) {
+
+.startScreen {
+    width: 1024px;
+    height: 480px;
+    border-radius: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-43%);
+
+}
+
+
+.BGImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+
+}
+
+
+
+
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
     canvas {
         width: 100%;
         border-radius: 0px;
-
     }
 
     h1 {
         display: none;
     }
+
+    .startScreen{
+        width: 100%;
+        border-radius: 0;
+        transform: translateY(-50%);
+    }
+
+    .BGImage {
+        border-radius: 0px;
+        object-fit: contain;
+    }
+
 }
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    canvas {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    h1 {
+        display: none;
+    }
+
+    .startScreen{
+        width: 100%;
+        border-radius: 0;
+        transform: translateY(-50%);
+    }
+
+    .BGImage {
+        border-radius: 0px;
+        object-fit: cover;
+    }
+
+}
+
+
+
+
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100dvh;
         border-radius: 0px;
-
     }
 
     h1 {
         display: none;
     }
+
+    .startScreen {
+        height: 100dvh;
+        border-radius: 0;
+    }
+    .BGImage {
+        border-radius: 0px;
+    }
 }
+
+/* @media only screen and (max-width: 850px) {
+    .BGImage {
+        object-fit: contain;
+        border-radius: 0px;
+    }
+} */
+
