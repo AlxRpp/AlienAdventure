@@ -49,13 +49,23 @@ canvas {
     height: 100%;
     object-fit: cover;
     border-radius: 16px;
+}
 
+.startGame{
+    border: none;
+    background-color: lightgreen;
+    padding: 12px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
 
 
 
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
+@media only screen and (max-width: 1024px) and (max-aspect-ratio: 1/1) {
     canvas {
         width: 100%;
         border-radius: 0px;
@@ -78,7 +88,7 @@ canvas {
 
 }
 
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width: 1024px) and (min-aspect-ratio: 1/1) {
     canvas {
         width: 100%;
         border-radius: 0px;
