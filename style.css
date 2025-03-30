@@ -79,12 +79,12 @@ canvas {
 
 }
 
-.button:hover{
+.button:hover {
     color: white;
     border: 1px solid white;
 }
 
-.legal{
+.legal {
     font-size: clamp(10px, 1.5vw + .15rem, 18px);
 
     font-weight: 500;
@@ -93,19 +93,19 @@ canvas {
     padding: 4px 0;
 }
 
-.speech{
+.speech {
     position: fixed;
     left: 1%;
     top: 16%;
     transform: rotate(-10deg);
 }
 
-.bubble{
+.bubble {
     height: 250px;
     width: 400px;
 }
 
-.textArea{
+.textArea {
     position: fixed;
     top: 8%;
     left: 0%;
@@ -116,8 +116,9 @@ canvas {
 
 }
 
-.textArea h2, p{
-margin: 0;
+.textArea h2,
+p {
+    margin: 0;
 }
 
 
@@ -197,45 +198,266 @@ margin: 0;
 }
 
 
-@media only screen and (max-width: 1024px){
-    .introductions{
+@media only screen and (max-width: 1024px) {
+    .introductions {
         display: none;
     }
 }
 
 
 
-    /* SpeechBubble Iphone XR */
+/* SpeechBubble Iphone XR */
 @media only screen and (max-height: 420px) {
-    .speech{
+    .speech {
         top: 10%;
     }
 
-    .bubble{
+    .bubble {
 
         width: 350px;
     }
-    
-    .textArea{
+
+    .textArea {
         font-size: 14px;
         width: 350px;
     }
-    }
-    
+}
 
-    /* SpeechBubble Iphone SE */
+
+/* SpeechBubble Iphone SE */
 @media only screen and (max-height: 380px) {
-    .speech{
+    .speech {
         top: 10%;
     }
 
-    .bubble{
+    .bubble {
         height: 227px;
         width: 264px;
     }
-    
-    .textArea{
+
+    .textArea {
         font-size: 12px;
         width: 264px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .bubble {
+        width: 375px;
+    }
+
+    .textArea {
+        font-size: 14px;
+        width: 375px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .bubble {
+        width: 350px;
+    }
+
+    .textArea {
+        font-size: 14px;
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .speech {
+        top: 10%;
+    }
+
+    .bubble {
+        width: 325px;
+    }
+
+    .textArea {
+        font-size: 14px;
+        width: 325px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .speech {
+        top: 7%;
+    }
+
+    .bubble {
+        width: 300px;
+    }
+
+    .textArea {
+        font-size: 13px;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .speech {
+        top: 7%;
+    }
+
+    .bubble {
+        width: 275px;
+        height: 227px;
+
+    }
+
+    .textArea {
+        font-size: 13px;
+        width: 275px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .speech {
+        top: 7%;
+    }
+
+    .bubble {
+        width: 255px;
+        height: 227px;
+
+    }
+
+    .textArea {
+        font-size: 11px;
+        width: 250px;
+        top: 10%;
+
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .speech {
+        top: 7%;
+    }
+
+    .bubble {
+        width: 225px;
+        height: 190px;
+
+    }
+
+    .textArea {
+        font-size: 10px;
+        width: 225px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .speech {
+        top: 5%;
+    }
+
+    .bubble {
+        width: 215px;
+        height: 170px;
+
+    }
+
+    .textArea {
+        font-size: 9.5px;
+        width: 215px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .speech {
+        top: 5%;
+    }
+
+    .bubble {
+        width: 215px;
+        height: 170px;
+
+    }
+
+    .textArea {
+        font-size: 9.5px;
+        width: 215px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .speech {
+        top: 3%;
+    }
+
+    .bubble {
+        width: 200px;
+        height: 145px;
+
+    }
+
+    .textArea {
+        font-size: 8px;
+        width: 200px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .speech {
+        top: 3%;
+    }
+
+    .bubble {
+        width: 175px;
+        height: 145px;
+
+    }
+
+    .textArea {
+        font-size: 8px;
+        width: 175px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .speech {
+        top: 3%;
+    }
+
+    .bubble {
+        width: 150px;
+        height: 145px;
+
+    }
+
+    .textArea {
+        font-size: 7px;
+        width: 150px;
+        top: 8%;
+
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .speech {
+        top: 3%;
+    }
+
+    .bubble {
+        width: 125px;
+        height: 110px;
+
+    }
+
+    .textArea {
+        font-size: 6px;
+        width: 125px;
+        top: 8%;
+
     }
 }
