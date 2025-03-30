@@ -17,22 +17,17 @@ function startGame() {
     init();
 }
 
-function inpressum(){
-    const screen = document.getElementById('startscreen');
-    screen.innerHTML = `
-    <h1>Impressum</h1>
-
-<p>Alexander Ruppel<br />
-Nieh&ouml;rsterstr. 13<br />
-33104 Paderborn</p>
-
-<h2>Kontakt</h2>
-<p>Telefon: &#91;Telefonnummer&#93;<br />
-E-Mail: alexanderr26@outlook.de</p>
-
-<p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
-    `;
+function openImpressum(){
+    event.stopPropagation()
+    const bubble = document.getElementById('speechBubble');
+    bubble.classList.remove('d-none')
 }
+
+function closeImpressum(){
+    const bubble = document.getElementById('speechBubble');
+    bubble.classList.add('d-none')
+}
+
 
 function setStoppableIntervall(fn, time) {
     let id = setInterval(fn, time);

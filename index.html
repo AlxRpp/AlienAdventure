@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alien Adventure</title>
     <link rel="shortcut icon" href="./assets/images/charakter/jump/green__0027_jump_1.png" type="image/x-icon">
-    
+
     <link rel="stylesheet" href="./assets/font/font.css">
     <link rel="stylesheet" href="./style.css">
 
@@ -31,7 +31,7 @@
     <script src="./scripts/game.js"></script>
 </head>
 
-<body onload="">
+<body onclick="closeImpressum()">
     <h1>Alien Adventure</h1>
 
 
@@ -44,22 +44,36 @@
         <div class="buttonSection">
             <button class="button legal">Mute Sounds</button>
             <button onclick="startGame()" class="button">Start Game</button>
-            <button onclick="inpressum()" class="button legal">Legal notice</button>
+            <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>
-    
+
 
         <div class="introductions">
             <p>D = Throw bottle</p>
             <p>Space = Jump</p>
             <p>Arrow left / right = Run</p>
         </div>
-        <img class="speech" src="./assets/images/9_intro_outro_screens/start/speech.png">
+
+        <div id="speechBubble" class="speech d-none">
+            <img class="bubble" src="./assets/images/9_intro_outro_screens/start/speech.png">
+            <div class="textArea">
+                <h2>Legal notice</h2>
+                <p>Alexander Ruppel<br />
+                Niehörsterstr. 13<br />
+                33104 Paderborn</p>
+                <h2>Kontakt</h2>
+                <p>Telefon: 017622393181<br />
+                E-Mail: alexanderr26@outlook.de</p>
+                
+                <p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
+            </div>
+        </div>
 
     </div>
 
-    
 
- 
+
+
 </body>
 
 </html>
