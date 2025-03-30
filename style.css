@@ -41,7 +41,7 @@ canvas {
     position: absolute;
     top: 50%;
     transform: translateY(-43%);
-    background-image: url('./assets/images/9_intro_outro_screens/start/startscreen_2.png');
+    background-image: url('./assets/images/9_intro_outro_screens/start/startscreen_1.png');
     background-position: center;
     background-size: cover;
     display: block;
@@ -57,11 +57,13 @@ canvas {
     border-radius: 8px;
     cursor: pointer;
     position: fixed;
-    left: 0;
-    bottom: 0;
+    left: 15%;
+    bottom: 15%;
 }
 
-
+.d-none{
+    display: none;
+}
 
 
 @media only screen and (max-width: 1024px) and (max-aspect-ratio: 1/1) {
@@ -81,9 +83,8 @@ canvas {
         /* background-size: contain; */
         background-repeat: no-repeat;
     }
-
-
 }
+
 
 @media only screen and (max-width: 1024px) and (min-aspect-ratio: 1/1) {
     canvas {
@@ -100,9 +101,6 @@ canvas {
         border-radius: 0;
         transform: translateY(-50%);
     }
-
-
-
 }
 
 
@@ -123,5 +121,4 @@ canvas {
         height: 100dvh;
         border-radius: 0;
     }
-
 }

@@ -10,7 +10,11 @@ function init() {
 };
 
 
-function startScreen() {
+function startGame() {
+    const screen = document.getElementById('startscreen');
+    screen.classList.add('d-none');
+    console.log("Game beginnt");
+    
     
 }
 
