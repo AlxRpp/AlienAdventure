@@ -41,9 +41,23 @@
 
 
     <div class="startScreen" id="startscreen">
-        <button onclick="startGame()" class="startGame">Start Game</button>
-        <button onclick="inpressum()" class="startGame Impressum">Impressum</button>
+        <div class="buttonSection">
+            <button class="button legal">Mute Sounds</button>
+            <button onclick="startGame()" class="button">Start Game</button>
+            <button onclick="inpressum()" class="button legal">Legal notice</button>
+        </div>
+    
+
+        <div class="introductions">
+            <p>D = Throw bottle</p>
+            <p>Space = Jump</p>
+            <p>Arrow left / right = Run</p>
+        </div>
+        <img class="speech" src="./assets/images/9_intro_outro_screens/start/speech.png">
+
     </div>
+
+    
 
  
 </body>

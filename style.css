@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "doto", serif;
     display: flex;
@@ -49,27 +53,69 @@ canvas {
 
 }
 
-
-
-.startGame {
-    border: none;
-    background-color: #95C021;
-    padding: 12px 32px;
-    border-radius: 8px;
-    cursor: pointer;
+.buttonSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 25%;
     position: fixed;
     left: 50%;
-    bottom: 15%;
-    transform: translateX(-50%);
-}
-
-.Impressum{
-    bottom: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
 }
 
-.d-none{
+.button {
+    font-family: "doto", serif;
+    font-weight: 700;
+    font-size: 32px;
+    border: none;
+    background-color: #95C021;
+    padding: 8px 0;
+    /* width: 25%; */
+    border-radius: 10px;
+    cursor: pointer;
+    /* position: fixed;
+    left: 50%;
+    bottom: 50%; */
+    border: 1px solid black;
+}
+.button:hover{
+    color: white;
+    border: 1px solid white;
+}
+
+.legal{
+    font-size: 16px;
+    font-weight: 500;
+    width: 80%;
+    margin: 0 auto;
+    padding: 4px 0;
+}
+
+.speech{
+    position: fixed;
+    left: 1%;
+    top: 16%;
+    height: 250px;
+    width: 400px;
+    transform: rotate(-10deg);
+}
+
+.d-none {
     display: none;
+}
+
+.introductions {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: fixed;
+    bottom: -60px;
+    padding: 0 24px;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 
