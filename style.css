@@ -41,9 +41,10 @@ canvas {
     position: absolute;
     top: 50%;
     transform: translateY(-43%);
-    background-image: url('./assets/images/9_intro_outro_screens/start/startscreen_1.png');
-    background-position: center;
+    background-image: url('./assets/images/9_intro_outro_screens/start/alienStartScreen.png');
+    background-position: bottom;
     background-size: cover;
+    background-repeat: no-repeat;
     display: block;
 
 }
@@ -52,13 +53,19 @@ canvas {
 
 .startGame {
     border: none;
-    background-color: lightgreen;
+    background-color: #95C021;
     padding: 12px 32px;
     border-radius: 8px;
     cursor: pointer;
     position: fixed;
-    left: 15%;
+    left: 50%;
     bottom: 15%;
+    transform: translateX(-50%);
+}
+
+.Impressum{
+    bottom: 25%;
+
 }
 
 .d-none{
