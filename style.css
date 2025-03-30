@@ -57,7 +57,7 @@ canvas {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 25%;
+    width: 30%;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -68,25 +68,25 @@ canvas {
 .button {
     font-family: "doto", serif;
     font-weight: 700;
-    font-size: 32px;
+    font-size: clamp(12px, 2.5vw + .25rem, 28px);
     border: none;
     background-color: #95C021;
-    padding: 8px 0;
-    /* width: 25%; */
+    padding: 8px 4px;
     border-radius: 10px;
     cursor: pointer;
-    /* position: fixed;
-    left: 50%;
-    bottom: 50%; */
     border: 1px solid black;
+    text-wrap: nowrap;
+
 }
+
 .button:hover{
     color: white;
     border: 1px solid white;
 }
 
 .legal{
-    font-size: 16px;
+    font-size: clamp(10px, 1.5vw + .15rem, 18px);
+
     font-weight: 500;
     width: 80%;
     margin: 0 auto;
@@ -133,7 +133,7 @@ margin: 0;
     position: fixed;
     bottom: -45px;
     padding: 0 24px;
-    font-size: 24px;
+    font-size: clamp(12px, 2.5vw + .25rem, 22px);
     font-weight: 500;
 }
 
@@ -155,6 +155,7 @@ margin: 0;
         /* background-size: contain; */
         background-repeat: no-repeat;
     }
+
 }
 
 
@@ -192,5 +193,49 @@ margin: 0;
     .startScreen {
         height: 100dvh;
         border-radius: 0;
+    }
+}
+
+
+@media only screen and (max-width: 1024px){
+    .introductions{
+        display: none;
+    }
+}
+
+
+
+    /* SpeechBubble Iphone XR */
+@media only screen and (max-height: 420px) {
+    .speech{
+        top: 10%;
+    }
+
+    .bubble{
+
+        width: 350px;
+    }
+    
+    .textArea{
+        font-size: 14px;
+        width: 350px;
+    }
+    }
+    
+
+    /* SpeechBubble Iphone SE */
+@media only screen and (max-height: 380px) {
+    .speech{
+        top: 10%;
+    }
+
+    .bubble{
+        height: 227px;
+        width: 264px;
+    }
+    
+    .textArea{
+        font-size: 12px;
+        width: 264px;
     }
 }
