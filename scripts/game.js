@@ -2,6 +2,10 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervallIds = [];
+let mainMusic = new Audio('./assets/audio/mainSound.mp3')
+mainMusic.volume = 0;
+let jumpSFX = new Audio('./assets/audio/jump.mp3')
+jumpSFX.volume = 1;
 
 function init() {
     canvas = document.getElementById('canvas');
@@ -15,6 +19,7 @@ function startGame() {
     screen.classList.add('d-none');
     console.log("Game beginnt");
     init();
+    mainMusic.play();
 }
 
 function openImpressum(){
