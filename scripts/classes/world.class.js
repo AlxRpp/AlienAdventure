@@ -212,6 +212,8 @@ class World {
             if (bottle.y > 360) {
                 bottle.y = 360;
                 bottle.playAnimation(bottle.images_BottleSplash);
+                bottleBreak.play();
+
                 clearInterval(this.splashIntervall)
                 setTimeout(() => {
                     let index = this.level.throwableObjects.indexOf(bottle);

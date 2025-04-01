@@ -40,11 +40,16 @@ function muteAllSounds(){
 }
 
 mainMusic.volume = .05;
-runCharacter.volume = .5;
-slash.volume = .3;
-runBoss.volume =.5;
-bottleCollect.volume = .2
-jumpCollision.volume = .3
+runCharacter.volume = .25;
+slash.volume = .2;
+runBoss.volume =.25;
+bottleCollect.volume = .2;
+bottleBreak.volume = .2;
+jumpCollision.volume = .2;
+hurtBoss.volume = .3;
+hurtCharacter.volume = .3;
+slide.volume = .5;
+chicken.volume = .5;
 
 
 

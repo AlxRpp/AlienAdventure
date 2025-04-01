@@ -5,7 +5,7 @@ class Endboss extends MoveableObject {
     otherDirection = true;
     offset = {
         top: 0,
-        left: 0,
+        left: 40,
         right: 0,
         bottom: 0
     };
@@ -13,7 +13,6 @@ class Endboss extends MoveableObject {
     bossEnergy = 100;
 
 
-    // hurtAnimation = false;
     animationPlayed = false;
     state = {
         attack: false,
