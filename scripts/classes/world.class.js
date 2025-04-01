@@ -86,7 +86,13 @@ class World {
         this.level.enemies.forEach((enemy, index) => {
             if (this.character.isColliding(enemy)) {
                 if (this.character.y + this.character.height <= enemy.y) {
-                    this.killEnemy(enemy, index);
+                    if (enemy instanceof SmallChicken) {
+                        chicken.play();
+                        this.killEnemy(enemy, index);
+                    } else {
+                        jumpCollision.play();
+                        this.killEnemy(enemy, index);
+                    }
                 }
                 if (!enemy.enemyDead) {
                     this.character.hit();
@@ -114,6 +120,7 @@ class World {
     characterCoinCollision() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
+                coinCollect.play();
                 this.amountCoin += 20;
                 this.level.coins.splice(index, 1)
                 this.coinStatusbar.setPercentage(this.amountCoin)
@@ -125,6 +132,7 @@ class World {
         if (this.amountBottle < 100) {
             this.level.bottles.forEach((bottle, index) => {
                 if (this.character.isColliding(bottle)) {
+                    bottleCollect.play();
                     this.amountBottle += 20;
                     this.level.bottles.splice(index, 1)
                     this.bottleStatusbar.setPercentage(this.amountBottle);
@@ -176,6 +184,7 @@ class World {
                     if (bottle.isColliding(enemy)) {
                         clearInterval(this.BotlleCollision);
                         this.splashBottle(thrownBottle)
+                        bottleBreak.play();
                         if (!(enemy instanceof Endboss)) {
                             this.hitEnemy(enemy, index)
                         } else {

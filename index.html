@@ -28,6 +28,7 @@
     <script src="./scripts/classes/endboss.class.js"></script>
     <script src="./scripts/classes/level.class.js"></script>
     <script src="./scripts/levels/level1.js"></script>
+    <script src="./scripts/audio.js"></script>
     <script src="./scripts/game.js"></script>
 </head>
 
@@ -42,7 +43,7 @@
 
     <div class="startScreen" id="startscreen">
         <div class="buttonSection">
-            <button class="button legal">Mute Sounds</button>
+            <button onclick="muteAllSounds()" class="button legal">Mute Sounds</button>
             <button onclick="startGame()" class="button">Start Game</button>
             <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>

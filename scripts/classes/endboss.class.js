@@ -125,14 +125,19 @@ class Endboss extends MoveableObject {
     animate(){
         setInterval(() => {
             if (this.state.dead) {
+                win.play();
                 this.bossIsDead();
             } else if (this.state.hurted) {
+                hurtBoss.play();
                 this.bossIsHurted();
             } else if (this.checkDistance()) {
+                slash.play();
                 this.bossIsAttacking();
             } else if (!this.animationPlayed) {
+                slide.play();
                 this.bossIsSlidingIn();
             } else {
+                runBoss.play();
                 this.bossIsRunning();
             }
         }, 100);

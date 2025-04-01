@@ -59,7 +59,7 @@ class MoveableObject extends DrawableObject {
     }
 
     jump() {
-        jumpSFX.play();
+         jump.play();
         this.speedY = 22;
     }
 
