@@ -143,6 +143,11 @@ class World {
     }
 
     checkThrownObjects() {
+        this.level.throwableObjects.forEach((bottle) => {
+            if (!bottle.splashed && bottle.y >= 360) {
+                this.splashBottle(bottle);
+            }
+        });
         if (this.collectedBottles > 0) {
             this.throwObjects();
         }
@@ -157,12 +162,12 @@ class World {
         if (this.keyboard.d && this.character.otherDirection) {
             let thrownBottle = new ThrowableObject(this.character.x - 40, this.character.y - 30, true);
             this.throwBottle(thrownBottle);
-            this.bottleEnemyCollision(thrownBottle);
+            //   this.bottleEnemyCollision(thrownBottle);
 
         } else if (this.keyboard.d) {
             let thrownBottle = new ThrowableObject(this.character.x + 40, this.character.y - 30, false);
             this.throwBottle(thrownBottle);
-            this.bottleEnemyCollision(thrownBottle);
+            //  this.bottleEnemyCollision(thrownBottle);
         }
     }
 
@@ -174,23 +179,26 @@ class World {
         if (this.collectedBottles < 0) {
             this.collectedBottles = 0;
         }
-        this.splashBottle(thrownBottle);
+        // this.splashBottle(thrownBottle);
+        this.bottleEnemyCollision(thrownBottle);
+
     };
 
     bottleEnemyCollision(thrownBottle) {
         this.BotlleCollision = setInterval(() => {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
-                    if (bottle.isColliding(enemy)) {
-                        clearInterval(this.BotlleCollision);
+                    if (bottle.isColliding(enemy) && !bottle.splashed) {
+                        bottle.splashed = true
+                        // clearInterval(this.BotlleCollision);
                         this.splashBottle(thrownBottle)
-                        bottleBreak.play();
+                        // bottleBreak.play();
                         if (!(enemy instanceof Endboss)) {
                             this.hitEnemy(enemy, index)
                         } else {
                             this.hurtEndboss();
                         }
-                    }
+                    } 
                 })
             });
         }, 100)
@@ -208,11 +216,17 @@ class World {
     }
 
     splashBottle(bottle) {
+        if (bottle.splashed) {
+            return
+        }
+
         this.splashIntervall = setInterval(() => {
             if (bottle.y > 360) {
                 bottle.y = 360;
+
                 bottle.playAnimation(bottle.images_BottleSplash);
                 bottleBreak.play();
+
 
                 clearInterval(this.splashIntervall)
                 setTimeout(() => {
@@ -222,7 +236,7 @@ class World {
                     }
                 }, 200)
             }
-        }, 250)
+        }, 50)
     };
 
     animateEndboss() {
