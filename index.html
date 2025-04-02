@@ -39,6 +39,24 @@
     <canvas id="canvas" width="1024px" height="480px">
     </canvas>
 
+    <div class="gamePanel">
+        <div class="leftPanel">
+            <div onclick="touchButton()" id="btnLeft" class="arrow"><img src="./assets/images/leftArrow.png"></div>
+            <div onclick="touchButton()" id="btnRight" class="arrow"><img src="./assets/images/rightArrow.png"></div>
+        </div>
+        <div class="rightPanel">
+            <div onclick="touchButton()" id="btnSpace" class="arrow"><img src="./assets/images/space_bar.png" alt="" srcset=""></div>
+            <div onclick="touchButton()" id="btnThrow" class="arrow"><img src="./assets/images/more_up.png" alt="" srcset=""></div>
+        </div>
+    </div>
+
+    <div class="topPanel">
+        <div class="topRight">
+            <div class="arrow"><img src="./assets/images/planet.png"></div>
+            <div onclick="muteAllSounds()" class="arrow"><img id="volume" src="./assets/images/volume_up.png"></div>
+            <div class="arrow"><img class="d-none" src="./assets/images/volume_off.png" alt="" srcset=""></div>
+        </div>
+    </div>
 
 
     <div class="startScreen" id="startscreen">
@@ -60,12 +78,12 @@
             <div class="textArea">
                 <h2>Legal notice</h2>
                 <p>Alexander Ruppel<br />
-                Niehörsterstr. 13<br />
-                33104 Paderborn</p>
+                    Niehörsterstr. 13<br />
+                    33104 Paderborn</p>
                 <h2>Kontakt</h2>
                 <p>Telefon: 017622393181<br />
-                E-Mail: alexanderr26@outlook.de</p>
-                
+                    E-Mail: alexanderr26@outlook.de</p>
+
                 <p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
             </div>
         </div>

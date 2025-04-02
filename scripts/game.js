@@ -69,3 +69,44 @@ window.addEventListener("keyup", (event) => {
 }
 );
 
+function touchButton(){
+    document.getElementById('btnLeft').addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        keyboard.left = true;
+    });
+
+    document.getElementById('btnLeft').addEventListener('touchend', (event) => {
+        event.preventDefault();
+        keyboard.left = false;
+    })
+
+    document.getElementById('btnRight').addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        keyboard.right = true;
+    });
+
+    document.getElementById('btnRight').addEventListener('touchend', (event) => {
+        event.preventDefault();
+        keyboard.right = false;
+    })
+    
+    document.getElementById('btnSpace').addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        keyboard.space = true;
+    });
+
+    document.getElementById('btnSpace').addEventListener('touchend', (event) => {
+        event.preventDefault();
+        keyboard.space = false;
+    })
+
+    document.getElementById('btnThrow').addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        keyboard.d = true;
+    });
+
+    document.getElementById('btnThrow').addEventListener('touchend', (event) => {
+        event.preventDefault();
+        keyboard.d = false;
+    });
+}

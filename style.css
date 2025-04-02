@@ -139,6 +139,55 @@ p {
 }
 
 
+.gamePanel{
+    position: absolute;
+    bottom: 5dvh;
+    transform: translateY(50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.5%;
+}
+
+.leftPanel, .rightPanel{
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+}
+
+.arrow{
+    background-color: #95C021;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.arrow img{
+    height: 28px;
+    width: 28px;
+    padding: 2px;
+}
+
+.topPanel{
+    position: absolute;
+    top: 5dvh;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 2.5%;
+    display: flex;
+    justify-content: end;
+
+}
+
+.topRight{
+    display: flex;
+    width: 10%;
+    justify-content: space-between;
+
+}
+
 @media only screen and (max-width: 1024px) and (max-aspect-ratio: 1/1) {
     canvas {
         width: 100%;
@@ -160,6 +209,16 @@ p {
 }
 
 
+@media (min-width: 1024px){
+    .gamePanel{
+        display: none;
+    }
+
+    .topPanel{
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 1024px) and (min-aspect-ratio: 1/1) {
     canvas {
         width: 100%;
@@ -175,6 +234,8 @@ p {
         border-radius: 0;
         transform: translateY(-50%);
     }
+
+
 }
 
 
@@ -183,8 +244,9 @@ p {
 
 @media only screen and (max-height: 480px) {
     canvas {
-        height: 100dvh;
+        height: 80dvh;
         border-radius: 0px;
+        box-shadow: 0px 0px 40px 0px #FDEAD5;
     }
 
     h1 {

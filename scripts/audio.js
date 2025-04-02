@@ -33,11 +33,7 @@ let allAudios = [
     win
 ];
 
-function muteAllSounds(){
-    allAudios.forEach(audio => {
-        audio.muted = ! audio.muted
-    });
-}
+
 
 mainMusic.volume = .05;
 runCharacter.volume = .25;
@@ -50,6 +46,21 @@ hurtBoss.volume = .3;
 hurtCharacter.volume = .3;
 slide.volume = .5;
 chicken.volume = .5;
+
+
+function muteAllSounds(){
+    const icon = document.getElementById('volume');
+    const volumeOn = './assets/images/volume_up.png';
+    const volumeOff = './assets/images/volume_off.png';
+    if (icon.src.includes('volume_up.png')) {
+        icon.src = volumeOff;
+    }else {
+        icon.src = volumeOn;
+    }
+    allAudios.forEach(audio => {
+        audio.muted = ! audio.muted
+    });
+}
 
 
 
