@@ -139,7 +139,7 @@ p {
 }
 
 
-.gamePanel{
+.gamePanel {
     position: absolute;
     bottom: 5dvh;
     transform: translateY(50%);
@@ -149,28 +149,29 @@ p {
     padding: 0 2.5%;
 }
 
-.leftPanel, .rightPanel{
+.leftPanel,
+.rightPanel {
     display: flex;
     width: 10%;
     justify-content: space-between;
 }
 
-.arrow{
+.arrow {
     background-color: #95C021;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-  
+
 }
 
-.arrow img{
+.arrow img {
     height: 28px;
     width: 28px;
     padding: 2px;
 }
 
-.topPanel{
+.topPanel {
     position: absolute;
     top: 5dvh;
     transform: translateY(-50%);
@@ -181,11 +182,54 @@ p {
 
 }
 
-.topRight{
+.topRight {
     display: flex;
     width: 10%;
-    justify-content: space-between;
+    justify-content: end;
 
+}
+
+.overlay {
+    position: absolute;
+    height: 100dvh;
+    width: 100dvw;
+    background-color: rgba(0, 0, 0, .9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+    font-size: 28px;
+    font-weight: 700;
+    gap: 42px;
+}
+
+
+
+.turnAnimation {
+    animation: turn 1.5s ease-in-out infinite;
+    height: 128px;
+    aspect-ratio: 1/1;
+}
+
+
+@keyframes turn {
+    from {
+        transform: rotateZ(0);
+
+    }
+
+    to {
+        transform: rotateZ(-45deg);
+
+    }
+}
+
+@media only screen and  (orientation: landscape) {
+
+    .overlay {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 1024px) and (max-aspect-ratio: 1/1) {
@@ -206,15 +250,17 @@ p {
         background-repeat: no-repeat;
     }
 
+
+
 }
 
 
-@media (min-width: 1024px){
-    .gamePanel{
+@media (min-width: 1024.1px) {
+    .gamePanel {
         display: none;
     }
 
-    .topPanel{
+    .topPanel {
         display: none;
     }
 }
