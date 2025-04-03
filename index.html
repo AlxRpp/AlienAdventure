@@ -33,13 +33,21 @@
 </head>
 
 <body onclick="closeImpressum()">
-    <h1>Alien Adventure</h1>
+
+    <div class="headline">
+        <div class="placeholder"></div>
+        <h1>Alien Adventure</h1>
+        <div id="volumeTop" onclick="muteAllSounds()" class="arrow volumeTopIcon"><img  src="./assets/images/volume_up.png"></div>
+    </div>
+
+
+
 
 
     <canvas id="canvas" width="1024px" height="480px">
     </canvas>
 
-    <div class="gamePanel">
+    <div id="gamePanel" class="gamePanel d-none">
         <div class="leftPanel">
             <div onclick="touchButton()" id="btnLeft" class="arrow"><img src="./assets/images/leftArrow.png"></div>
             <div onclick="touchButton()" id="btnRight" class="arrow"><img src="./assets/images/rightArrow.png"></div>
@@ -50,10 +58,10 @@
         </div>
     </div>
 
-    <div class="topPanel">
+    <div id="topPanel" class="topPanel d-none">
         <div class="topRight">
             <!-- <div class="arrow"><img src="./assets/images/planet.png"></div> -->
-            <div onclick="muteAllSounds()" class="arrow"><img id="volume" src="./assets/images/volume_up.png"></div>
+            <div id="mobileIcon" onclick="muteAllSounds()" class="arrow"><img id="volume" src="./assets/images/volume_up.png"></div>
             <div class="arrow"><img class="d-none" src="./assets/images/volume_off.png" alt="" srcset=""></div>
         </div>
     </div>
@@ -61,7 +69,7 @@
 
     <div class="startScreen" id="startscreen">
         <div class="buttonSection">
-            <button onclick="muteAllSounds()" class="button legal">Mute Sounds</button>
+            <button id="volumeBottom" onclick="muteAllSounds()" class="button legal">Mute Sounds</button>
             <button onclick="startGame()" class="button">Start Game</button>
             <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>

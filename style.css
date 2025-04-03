@@ -32,9 +32,17 @@ canvas {
     display: block;
 }
 
+.headline{
+    display: flex;
+    width: 1024px;
+    padding: 0 12px;
+    justify-content: space-between;
+    align-items: center;
+}
 
-
-
+.placeholder{
+    width: 10%;
+}
 
 
 .startScreen {
@@ -122,9 +130,7 @@ p {
 }
 
 
-.d-none {
-    display: none;
-}
+
 
 .introductions {
     display: flex;
@@ -165,6 +171,16 @@ p {
 
 }
 
+.volumeTopIcon{
+    height: 48px;
+    aspect-ratio: 1/1;
+    z-index: 1;
+}
+
+.border{
+    border: 3px solid darkorange;
+}
+
 .arrow img {
     height: 28px;
     width: 28px;
@@ -193,13 +209,13 @@ p {
     position: absolute;
     height: 100dvh;
     width: 100dvw;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, .85);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     flex-direction: column;
-    font-size: 28px;
+    font-size: clamp(22px, 4vw + .5rem, 42px);
     font-weight: 700;
     gap: 42px;
 }
@@ -230,7 +246,21 @@ p {
     .overlay {
         display: none;
     }
+
+    .gamePanel{
+        display: flex !important;
+    }
+
+    .topPanel{
+        display: flex !important;
+    }
 }
+
+@media only screen and (orientatipn: portrait) {
+    
+} 
+    
+
 
 @media only screen and (max-width: 1024px) and (max-aspect-ratio: 1/1) {
     canvas {
@@ -238,10 +268,9 @@ p {
         border-radius: 0px;
     }
 
-    h1 {
+    h1{
         display: none;
     }
-
     .startScreen {
         width: 100%;
         border-radius: 0;
@@ -249,19 +278,23 @@ p {
         /* background-size: contain; */
         background-repeat: no-repeat;
     }
+}
 
 
-
+@media (max-width: 1024.1px) {
+    .headline{
+        display: none;
+    }
 }
 
 
 @media (min-width: 1024.1px) {
     .gamePanel {
-        display: none;
+        display: none !important;
     }
 
     .topPanel {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -568,4 +601,8 @@ p {
         top: 8%;
 
     }
+}
+
+.d-none {
+    display: none;
 }
