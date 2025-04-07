@@ -52,17 +52,20 @@ function muteAllSounds() {
     const topIcon = document.getElementById('volumeTop')
     const bottemIcon = document.getElementById('volumeBottom')
     const icon = document.getElementById('volume');
+    const iconDesktop = document.getElementById('volumeDesk');
     const mobileIcon = document.getElementById('mobileIcon');
     const volumeOn = './assets/images/volume_up.png';
     const volumeOff = './assets/images/volume_off.png';
-    if (icon.src.includes('volume_up.png')) {
+    if (icon.src.includes('volume_up.png') || iconDesktop.src.includes('volume_up.png')) {
         icon.src = volumeOff;
+        iconDesktop.src = volumeOff
         topIcon.classList.add('border');
         bottemIcon.classList.add('border');
         mobileIcon.classList.add('border');
 
     } else {
         icon.src = volumeOn;
+        iconDesktop.src = volumeOn;
         topIcon.classList.remove('border');
         bottemIcon.classList.remove('border');
         mobileIcon.classList.remove('border');

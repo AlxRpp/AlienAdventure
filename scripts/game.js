@@ -33,6 +33,7 @@ function closeImpressum() {
 function setStoppableIntervall(fn, time) {
     let id = setInterval(fn, time);
     intervallIds.push(id);
+    return id;
 };
 
 

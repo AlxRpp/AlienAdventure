@@ -39,8 +39,8 @@ class World {
         this.addItemToCanvas(this.bottleStatusbar);
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
         this.addObjectToCanvas(this.level.enemies);
-        this.addItemToCanvas(this.character);
-        this.addObjectToCanvas(this.level.coins);
+        this.addItemToCanvas(this.character);0
+         this.addObjectToCanvas(this.level.coins);
         this.addObjectToCanvas(this.level.bottles);
         this.addObjectToCanvas(this.level.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
@@ -67,14 +67,6 @@ class World {
         }
     }
 
-    // run() {
-    //     setInterval(() => {
-    //         this.checkCollisions();
-    //         this.checkThrownObjects();
-    //         this.animateEndboss();
-    //     }, 100)
-    // }
-
 
     run() {
         setStoppableIntervall(() => {
@@ -83,7 +75,6 @@ class World {
             this.animateEndboss();
         }, 100)
     }
-
 
     checkCollisions() {
         this.charakterEnemyCollision();
@@ -122,7 +113,7 @@ class World {
             setTimeout(() => {
                 enemy.loadImage(enemy.images_Empty);
                 this.level.enemies.splice(index, 1)
-            }, 1000)
+            }, 500)
         }
     }
 
@@ -211,7 +202,6 @@ class World {
                 })
             });
         }, 100)
-
     };
 
     hitEnemy(enemy, index) {
