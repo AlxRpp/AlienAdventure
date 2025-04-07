@@ -81,28 +81,56 @@ class Character extends MoveableObject {
     }
 
 
-    status() {
-        setInterval(() => {
-            if (this.isDead()) {
-                gameOver.play();
-                this.playAnimation(this.images_dead);
-            } else if (this.isHurt()) {
-                hurtCharacter.play();
-                this.playAnimation(this.images_hurt);
-            } else if (this.isAboveGround()) {
-                // jump.play()
-                this.playAnimation(this.images_jumping);
-            } else if (this.world.keyboard.right || this.world.keyboard.left) {
-                runCharacter.play();
-                this.playAnimation(this.images_Walking);
-            } else {
-                setTimeout(() => {
-                    this.idleCharacter();
-                }, 10000)
-            }
-        }, 100);
+    // status() {
+    //     setInterval(() => {
+    //         if (this.isDead()) {
+    //             gameOver.play();
+    //             this.playAnimation(this.images_dead);
+    //         } else if (this.isHurt()) {
+    //             hurtCharacter.play();
+    //             this.playAnimation(this.images_hurt);
+    //         } else if (this.isAboveGround()) {
+    //             // jump.play()
+    //             this.playAnimation(this.images_jumping);
+    //         } else if (this.world.keyboard.right || this.world.keyboard.left) {
+    //             runCharacter.play();
+    //             this.playAnimation(this.images_Walking);
+    //         } else {
+    //             setTimeout(() => {
+    //                 this.idleCharacter();
+    //             }, 10000)
+    //         }
+    //     }, 100);
 
-    }
+    // }
+
+       
+ status() {
+    setStoppableIntervall(() => {
+        if (this.isDead()) {
+            gameOver.play();
+            this.playAnimation(this.images_dead);
+        }
+        if (this.isHurt()) {
+            hurtCharacter.play();
+            this.playAnimation(this.images_hurt);
+        }
+        if (this.isAboveGround()) {
+            this.playAnimation(this.images_jumping);
+        }
+         if (this.world.keyboard.right || this.world.keyboard.left) {
+            runCharacter.play();
+            this.playAnimation(this.images_Walking);
+        }
+        
+    }, 100)
+
+    setStoppableIntervall(() => {
+        setTimeout(() => {
+            this.idleCharacter();
+        }, 2000)
+    }, 250)
+}
 
 
     idleCharacter() {

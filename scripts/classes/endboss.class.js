@@ -5,7 +5,7 @@ class Endboss extends MoveableObject {
     otherDirection = true;
     offset = {
         top: 0,
-        left: 40,
+        left: 0,
         right: 0,
         bottom: 0
     };
@@ -19,7 +19,8 @@ class Endboss extends MoveableObject {
         hurted: false,
         follow: false,
         dead: false,
-        run: false
+        run: false,
+        canAttack: true
     }
 
 
@@ -121,85 +122,122 @@ class Endboss extends MoveableObject {
     }
 
 
-    animate(){
-        setInterval(() => {
+    // animate(){
+    //     setInterval(() => {
+    //         if (this.state.dead) {
+    //             win.play();
+    //             this.bossIsDead();
+    //         } else if (this.state.hurted) {
+    //             hurtBoss.play();
+    //             this.bossIsHurted();
+    //         } else if (this.checkDistance()) {
+    //             slash.play();
+    //             this.bossIsAttacking();
+    //         } else if (!this.animationPlayed) {
+    //             slide.play();
+    //             this.bossIsSlidingIn();
+    //         } else {
+    //             runBoss.play();
+    //             this.bossIsRunning();
+    //         }
+    //     }, 100);
+    // }
+
+    animate() {
+        setStoppableIntervall(() => {
             if (this.state.dead) {
                 win.play();
-                this.bossIsDead();
-            } else if (this.state.hurted) {
+                this.bossIsDead()
+            }
+        }, 100)
+
+        setStoppableIntervall(() => {
+            if (this.state.hurted) {
                 hurtBoss.play();
                 this.bossIsHurted();
-            } else if (this.checkDistance()) {
+            }
+        }, 100)
+
+        setStoppableIntervall(() => {
+            if (this.checkDistance()) {
                 slash.play();
                 this.bossIsAttacking();
-            } else if (!this.animationPlayed) {
+            }
+        }, 800)
+
+        setStoppableIntervall(() => {
+            if (!this.animationPlayed) {
                 slide.play();
                 this.bossIsSlidingIn();
-            } else {
+            }
+        }, 100)
+
+        setStoppableIntervall(() => {
+            if ((!this.state.dead) && (!this.state.hurted) && (!this.state.attack)) {
                 runBoss.play();
                 this.bossIsRunning();
             }
-        }, 100);
+        }, 600)
     }
 
 
-    bossIsDead(){
+    bossIsDead() {
         this.playAnimation(this.images_DEAD);
     }
 
-    bossIsHurted(){
-       this.playAnimation(this.images_HURT);
-        setTimeout(()=>{
+    bossIsHurted() {
+        this.playAnimation(this.images_HURT);
+        setTimeout(() => {
             this.state.hurted = false;
-        },500)
+        }, 500)
     }
 
-    bossIsAttacking(){
+    bossIsAttacking() {
         this.playAnimation(this.images_Slashing);
     }
 
-    bossIsSlidingIn(){
+    bossIsSlidingIn() {
         this.playAnimation(this.images_SLIDING);
         this.x -= 25
         if (this.x < 3050) {
             this.x = 3050;
-        this.animationPlayed = true;
+            this.animationPlayed = true;
         }
     }
 
-    bossIsRunning(){
+    bossIsRunning() {
         this.moveLeft();
         this.playAnimation(this.images_running);
         this.dontRunThru();
     }
 
 
-    checkDistance(){
+    checkDistance() {
         this.offset.left = 50
         let character = world.character.x;
         let endboss = this.x;
         let gap = endboss - character;
-            if (gap < 10 && gap > -200) {
-                this.state.attack = true;
-                return true
-            } else{
-                this.state.attack = false;
-                return false
-            }
+        if (gap < 10 && gap > -200){
+            this.state.attack = true;
+            return true
+        } else {
+            this.state.attack = false;
+            return false
+        }
     }
 
-        takeDamage() {
-            this.bossEnergy -= 20;
-            console.log("Boss Energy:", this.bossEnergy);
-            if (this.bossEnergy <= 0) {
-                this.bossEnergy = 0;
-                this.state.dead = true
-            }
+    takeDamage() {
+        this.bossEnergy -= 20;
+        console.log("Boss Energy:", this.bossEnergy);
+        if (this.bossEnergy <= 0) {
+            this.bossEnergy = 0;
+            this.state.dead = true
         }
+    }
 
-        dontRunThru(){
-            let boss = this.x
-            world.level.level_end_x = boss
-        }
+    dontRunThru() {
+        let boss = this.x
+        world.level.level_end_x = boss
+    }
 }
 
