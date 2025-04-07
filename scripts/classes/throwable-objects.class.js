@@ -43,7 +43,7 @@ class ThrowableObject extends MoveableObject {
     throwLeft() {
         this.speedY = 30;
         this.applyGravitation();
-        setInterval(() => {
+        setStoppableIntervall(() => {
             this.playAnimation(this.images_bottleThrow)
             this.x -= 10;
         }, 45);
@@ -52,7 +52,7 @@ class ThrowableObject extends MoveableObject {
     throwRight(){
         this.speedY = 30;
         this.applyGravitation();
-        setInterval(() => {
+        setStoppableIntervall(() => {
             this.playAnimation(this.images_bottleThrow)
             this.x += 10;
         }, 45);

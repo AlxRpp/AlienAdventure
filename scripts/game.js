@@ -6,26 +6,25 @@ let intervallIds = [];
 
 function init() {
     canvas = document.getElementById('canvas');
+    initLvl1();
     world = new World(canvas, keyboard);
-
+    mainMusic.play();
 };
 
 
 function startGame() {
     const screen = document.getElementById('startscreen');
     screen.classList.add('d-none');
-    console.log("Game beginnt");
     init();
-    mainMusic.play();
 }
 
-function openImpressum(){
+function openImpressum() {
     event.stopPropagation()
     const bubble = document.getElementById('speechBubble');
     bubble.classList.remove('d-none')
 }
 
-function closeImpressum(){
+function closeImpressum() {
     const bubble = document.getElementById('speechBubble');
     bubble.classList.add('d-none')
 }
@@ -69,7 +68,7 @@ window.addEventListener("keyup", (event) => {
 }
 );
 
-function touchButton(){
+function touchButton() {
     document.getElementById('btnLeft').addEventListener('touchstart', (event) => {
         event.preventDefault();
         keyboard.left = true;
@@ -89,7 +88,7 @@ function touchButton(){
         event.preventDefault();
         keyboard.right = false;
     })
-    
+
     document.getElementById('btnSpace').addEventListener('touchstart', (event) => {
         event.preventDefault();
         keyboard.space = true;
@@ -109,4 +108,35 @@ function touchButton(){
         event.preventDefault();
         keyboard.d = false;
     });
+}
+
+
+function stopGame() {
+    const screen = document.getElementById('endScreen')
+    intervallIds.forEach(clearInterval)
+    setTimeout(() => {
+        screen.classList.remove('d-none')
+        stopAllAudio();
+    }, 2500);
+}
+
+function goToStartScrren() {
+    const endScreen = document.getElementById('endScreen')
+    const startscreen = document.getElementById('startscreen')
+    endScreen.classList.add('d-none');
+    startscreen.classList.remove('d-none');
+}
+
+
+function stopAllAudio() {
+    allAudios.forEach((audio) => {
+        audio.pause()
+        audio.currentTime = 0;
+    })
+}
+
+function resetGame(){
+    const endScreen = document.getElementById('endScreen')
+    endScreen.classList.add('d-none');
+    init();
 }

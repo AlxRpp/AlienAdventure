@@ -41,11 +41,9 @@
     </div>
 
 
-
-
-
     <canvas id="canvas" width="1024px" height="480px">
     </canvas>
+
 
     <div id="gamePanel" class="gamePanel d-none">
         <div class="leftPanel">
@@ -57,6 +55,7 @@
             <div onclick="touchButton()" id="btnThrow" class="arrow"><img src="./assets/images/more_up.png" alt="" srcset=""></div>
         </div>
     </div>
+
 
     <div id="topPanel" class="topPanel d-none">
         <div class="topRight">
@@ -73,14 +72,11 @@
             <button onclick="startGame()" class="button">Start Game</button>
             <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>
-
-
         <div class="introductions">
             <p>D = Throw bottle</p>
             <p>Space = Jump</p>
             <p>Arrow left / right = Run</p>
         </div>
-
         <div id="speechBubble" class="speech d-none">
             <img class="bubble" src="./assets/images/9_intro_outro_screens/start/speech.png">
             <div class="textArea">
@@ -94,17 +90,23 @@
                 <p>Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a></p>
             </div>
         </div>
-
     </div>
+
+
+    <div class="startScreen endScreen d-none" id="endScreen">
+        <div class="buttonSection">
+            <button id="volumeBottom" onclick="goToStartScrren()" class="button legal">Home</button>
+            <button onclick="resetGame()" class="button">Restart </button>
+            <!-- <button onclick="openImpressum()" class="button legal">Legal notice</button> -->
+        </div>
+    </div>
+
 
     <div class="overlay">
         <p>For maximum fun, please</p>
         <img class="turnAnimation" src="./assets/images/screen.png">
         <p>turn your device </p>
     </div>
-
-
-
 
 </body>
 

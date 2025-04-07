@@ -67,8 +67,17 @@ class World {
         }
     }
 
+    // run() {
+    //     setInterval(() => {
+    //         this.checkCollisions();
+    //         this.checkThrownObjects();
+    //         this.animateEndboss();
+    //     }, 100)
+    // }
+
+
     run() {
-        setInterval(() => {
+        setStoppableIntervall(() => {
             this.checkCollisions();
             this.checkThrownObjects();
             this.animateEndboss();
@@ -185,7 +194,7 @@ class World {
     };
 
     bottleEnemyCollision(thrownBottle) {
-        this.BotlleCollision = setInterval(() => {
+        this.BotlleCollision = setStoppableIntervall(() => {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy) && !bottle.splashed) {
@@ -220,7 +229,7 @@ class World {
             return
         }
 
-        this.splashIntervall = setInterval(() => {
+        this.splashIntervall = setStoppableIntervall(() => {
             if (bottle.y > 360) {
                 bottle.y = 360;
 

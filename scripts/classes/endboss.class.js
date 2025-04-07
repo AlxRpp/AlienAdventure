@@ -20,7 +20,6 @@ class Endboss extends MoveableObject {
         follow: false,
         dead: false,
         run: false,
-        canAttack: true
     }
 
 
@@ -183,6 +182,7 @@ class Endboss extends MoveableObject {
 
     bossIsDead() {
         this.playAnimation(this.images_DEAD);
+        stopGame();
     }
 
     bossIsHurted() {

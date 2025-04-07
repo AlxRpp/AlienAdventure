@@ -63,7 +63,7 @@ class Character extends MoveableObject {
 
 
     movement() {
-        setInterval(() => {
+        setStoppableIntervall(() => {
             if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
                 this.otherDirection = false;
                 this.moveRight();
