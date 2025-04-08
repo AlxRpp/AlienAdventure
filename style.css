@@ -228,6 +228,13 @@ p {
     aspect-ratio: 1/1;
 }
 
+.winOrLost{
+    margin: 0 auto;
+    z-index: 9;
+    position: absolute;
+    width: 100%;
+    top: -50%;
+}
 
 @keyframes turn {
     from {

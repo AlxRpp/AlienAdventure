@@ -2,6 +2,8 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervallIds = [];
+let wonIMG = './assets/images/You won, you lost/You won A.png';
+let gameOverIMG = './assets/images/You won, you lost/Game over A.png'
 
 
 function init() {
@@ -141,3 +143,12 @@ function resetGame(){
     endScreen.classList.add('d-none');
     init();
 }
+
+function getFinalImg(){
+    let deadBoss = world.level.enemies[0].state.dead
+    if (deadBoss) {
+        
+    }
+    
+}
+
