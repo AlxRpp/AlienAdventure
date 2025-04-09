@@ -118,9 +118,11 @@ function stopGame() {
     const screen = document.getElementById('endScreen')
     intervallIds.forEach(clearInterval)
     setTimeout(() => {
-        screen.classList.remove('d-none')
+        screen.classList.remove('d-none');
+        getFinalImg();
         stopAllAudio();
-    }, 2500);
+        removeFinalImg();
+    }, 1000);
 }
 
 function goToStartScrren() {
@@ -145,10 +147,27 @@ function resetGame(){
 }
 
 function getFinalImg(){
-    let deadBoss = world.level.enemies[0].state.dead
+    let deadBoss = world.level.enemies[0].state.dead;
+    let gameover = document.getElementById('gameOver');
+    let win = document.getElementById('win');
     if (deadBoss) {
-        
+        gameover.classList.add('d-none');
+        win.classList.remove('d-none');
+
+    } else{
+        gameover.classList.remove('d-none');
+        win.classList.add('d-none');
     }
-    
 }
 
+
+function removeFinalImg(){
+    setTimeout(()=>{
+        let gameover = document.getElementById('gameOver');
+        let win = document.getElementById('win');
+        win.classList.add('d-none');
+        gameover.classList.add('d-none');
+    },1000)
+
+
+}
