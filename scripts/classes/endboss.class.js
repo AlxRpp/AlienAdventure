@@ -228,7 +228,7 @@ class Endboss extends MoveableObject {
 
     takeDamage() {
         this.bossEnergy -= 20;
-        console.log("Boss Energy:", this.bossEnergy);
+        world.bossStatusbar.setPercentage(this.bossEnergy)
         if (this.bossEnergy <= 0) {
             this.bossEnergy = 0;
             this.state.dead = true

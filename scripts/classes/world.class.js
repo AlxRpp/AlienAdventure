@@ -10,7 +10,7 @@ class World {
     coinStatusbar = new CoinStatusbar();
     bottleStatusbar = new BottleStatusbar();
     bossStatusbar = new BossStatusbar();
-
+    showBossStatusbar = false
     amountBottle = 0;
     amountCoin = 0;
     collectedBottles = 0;
@@ -39,11 +39,13 @@ class World {
         this.addItemToCanvas(this.statusbar);
         this.addItemToCanvas(this.coinStatusbar);
         this.addItemToCanvas(this.bottleStatusbar);
-        this.addItemToCanvas(this.bossStatusbar);
+        if (this.showBossStatusbar) {
+            this.addItemToCanvas(this.bossStatusbar);
+        }
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
         this.addObjectToCanvas(this.level.enemies);
-        this.addItemToCanvas(this.character);0
-         this.addObjectToCanvas(this.level.coins);
+        this.addItemToCanvas(this.character); 0
+        this.addObjectToCanvas(this.level.coins);
         this.addObjectToCanvas(this.level.bottles);
         this.addObjectToCanvas(this.level.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
@@ -201,7 +203,7 @@ class World {
                         } else {
                             this.hurtEndboss();
                         }
-                    } 
+                    }
                 })
             });
         }, 100)
@@ -244,6 +246,7 @@ class World {
     animateEndboss() {
         let x = this.character.x;
         if (x > 3000) {
+            this.showBossStatusbar = true;
             this.level.enemies[0].animate();
         }
     }
