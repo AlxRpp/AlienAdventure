@@ -9,6 +9,8 @@ class World {
     statusbar = new Statusbar();
     coinStatusbar = new CoinStatusbar();
     bottleStatusbar = new BottleStatusbar();
+    bossStatusbar = new BossStatusbar();
+
     amountBottle = 0;
     amountCoin = 0;
     collectedBottles = 0;
@@ -37,6 +39,7 @@ class World {
         this.addItemToCanvas(this.statusbar);
         this.addItemToCanvas(this.coinStatusbar);
         this.addItemToCanvas(this.bottleStatusbar);
+        this.addItemToCanvas(this.bossStatusbar);
         this.ctx.translate(this.camera_x, 0); // Camera Forewarts
         this.addObjectToCanvas(this.level.enemies);
         this.addItemToCanvas(this.character);0
