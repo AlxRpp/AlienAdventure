@@ -2,7 +2,7 @@ class MoveableObject extends DrawableObject {
     speed = .15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 2.5;
+    acceleration = .8;
     energy = 100
     lastHit = 0;
     offset = {
@@ -40,7 +40,7 @@ class MoveableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        }, 1000 / 30)
+        }, 1000 / 60)
     }
 
     isAboveGround() {
@@ -61,7 +61,7 @@ class MoveableObject extends DrawableObject {
 
     jump() {
          jump.play();
-        this.speedY = 20;
+        this.speedY = 13;
     }
 
     playAnimation(images) {

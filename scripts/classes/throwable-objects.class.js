@@ -25,6 +25,7 @@ class ThrowableObject extends MoveableObject {
         this.height = 80;
         this.width = 60;
         this.runLeft = runOtherDirection;
+        this.acceleration = 1.1
         this.throw()
         // this.throwLeft
     }
@@ -41,21 +42,21 @@ class ThrowableObject extends MoveableObject {
 
 
     throwLeft() {
-        this.speedY = 30;
+        this.speedY = 21;
         this.applyGravitation();
         setStoppableIntervall(() => {
             this.playAnimation(this.images_bottleThrow)
-            this.x -= 10;
-        }, 45);
+            this.x -= 13;
+        }, 32);
     }
 
     throwRight(){
-        this.speedY = 30;
+        this.speedY = 21;
         this.applyGravitation();
         setStoppableIntervall(() => {
             this.playAnimation(this.images_bottleThrow)
-            this.x += 10;
-        }, 45);
+            this.x += 13;
+        }, 32);
     }
 
 

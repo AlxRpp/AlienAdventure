@@ -19,18 +19,18 @@
             // new Chicken(),
 
 
-            new Chicken(),
-            new SmallChicken(),
-            new Chicken(),
-            new SmallChicken(),
-            new Chicken(),
-            new SmallChicken(),
-            new SmallChicken(),
-            new Chicken(),
-            new SmallChicken(),
-            new Chicken(),
-            new Chicken(),
-            new SmallChicken()
+            // new Chicken(),
+            // new SmallChicken(),
+            // new Chicken(),
+            // new SmallChicken(),
+            // new Chicken(),
+            // new SmallChicken(),
+            // new SmallChicken(),
+            // new Chicken(),
+            // new SmallChicken(),
+            // new Chicken(),
+            // new Chicken(),
+            // new SmallChicken()
         ],
         [
             new Clouds('./assets/images/background/4_clouds/1.png'),
