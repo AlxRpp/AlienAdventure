@@ -2,9 +2,9 @@ class Bottle extends DrawableObject {
     width = 80;
     height = 80;
     offset = {
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 10,
+        left: 35,
+        right: 15,
         bottom: 0
     };
     
