@@ -9,7 +9,7 @@ class Endboss extends MoveableObject {
         right: 0,
         bottom: 0
     };
-    speed = 1.5;
+    // speed = 1.5;
     bossEnergy = 100;
 
 
