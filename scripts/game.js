@@ -171,3 +171,9 @@ function removeFinalImg(){
 
 
 }
+
+function saveSoundSettings(){
+       localStorage.setItem('audioEnabled', 'true')
+}
+
+

@@ -33,12 +33,12 @@
     <script src="./scripts/game.js"></script>
 </head>
 
-<body onclick="closeImpressum()">
+<body onload="saveSoundSettings()" onclick="closeImpressum()">
 
     <div class="headline">
         <div class="placeholder"></div>
         <h1>Alien Adventure</h1>
-        <div id="volumeTop" onclick="muteAllSounds()" class="arrow volumeTopIcon"><img id="volumeDesk" src="./assets/images/volume_up.png"></div>
+        <div id="volumeTop" onclick="setAudioSettings()" class="arrow volumeTopIcon"><img id="volumeDesk" src="./assets/images/volume_up.png"></div>
     </div>
 
 
@@ -61,7 +61,7 @@
     <div id="topPanel" class="topPanel d-none">
         <div class="topRight">
             <!-- <div class="arrow"><img src="./assets/images/planet.png"></div> -->
-            <div id="mobileIcon" onclick="muteAllSounds()" class="arrow"><img id="volume" src="./assets/images/volume_up.png"></div>
+            <div id="mobileIcon" onclick="setAudioSettings()" class="arrow"><img id="volume" src="./assets/images/volume_up.png"></div>
             <div class="arrow"><img class="d-none" src="./assets/images/volume_off.png"></div>
         </div>
     </div>
@@ -69,7 +69,7 @@
 
     <div class="startScreen" id="startscreen">
         <div class="buttonSection">
-            <button id="volumeBottom" onclick="muteAllSounds()" class="button legal">Mute Sounds</button>
+            <button id="volumeBottom" onclick="setAudioSettings()" class="button legal">Mute Sounds</button>
             <button onclick="startGame()" class="button">Start Game</button>
             <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>

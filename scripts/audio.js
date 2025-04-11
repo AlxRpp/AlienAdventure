@@ -48,28 +48,24 @@ slide.volume = .5;
 chicken.volume = .5;
 
 
-function muteAllSounds() {
-    const topIcon = document.getElementById('volumeTop')
-    const bottemIcon = document.getElementById('volumeBottom')
-    const icon = document.getElementById('volume');
-    const iconDesktop = document.getElementById('volumeDesk');
-    const mobileIcon = document.getElementById('mobileIcon');
-    const volumeOn = './assets/images/volume_up.png';
-    const volumeOff = './assets/images/volume_off.png';
-    if (icon.src.includes('volume_up.png') || iconDesktop.src.includes('volume_up.png')) {
-        icon.src = volumeOff;
-        iconDesktop.src = volumeOff
-        topIcon.classList.add('border');
-        bottemIcon.classList.add('border');
-        mobileIcon.classList.add('border');
+function setAudioSettings() {
+    let settings = localStorage.getItem('audioEnabled');
 
+    if (settings === 'true') {
+        localStorage.setItem('audioEnabled', 'false');
     } else {
-        icon.src = volumeOn;
-        iconDesktop.src = volumeOn;
-        topIcon.classList.remove('border');
-        bottemIcon.classList.remove('border');
-        mobileIcon.classList.remove('border');
+        localStorage.setItem('audioEnabled', 'true');
+    }
+    muteAllSounds();
+}
 
+
+function muteAllSounds() {
+    let settings = localStorage.getItem('audioEnabled');
+    if (settings === 'true') {
+        setBorder();
+    } else {
+        setBorder();
     }
     allAudios.forEach(audio => {
         audio.muted = !audio.muted
@@ -77,5 +73,16 @@ function muteAllSounds() {
 }
 
 
+function setBorder() {
+    const topIcon = document.getElementById('volumeTop')
+    const bottemIcon = document.getElementById('volumeBottom')
+    const icon = document.getElementById('volume');
+    const iconDesktop = document.getElementById('volumeDesk');
+    const mobileIcon = document.getElementById('mobileIcon');
 
-
+    icon.src = './assets/images/volume_up.png';
+    iconDesktop.src = './assets/images/volume_up.png';
+    topIcon.classList.toggle('border');
+    bottemIcon.classList.toggle('border');
+    mobileIcon.classList.toggle('border');
+}
