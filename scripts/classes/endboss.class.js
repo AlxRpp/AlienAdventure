@@ -4,12 +4,12 @@ class Endboss extends MoveableObject {
     width = 525;
     otherDirection = true;
     offset = {
-        top: 0,
-        left: 0,
+        top: 125,
+        left: 175,
         right: 0,
         bottom: 0
     };
-    // speed = 1.5;
+    speed = 1.5;
     bossEnergy = 100;
 
 
@@ -155,29 +155,32 @@ class Endboss extends MoveableObject {
                 hurtBoss.play();
                 this.bossIsHurted();
             }
-        }, 100)
+        }, 300)
 
         setStoppableIntervall(() => {
             if (this.checkDistance()) {
                 slash.play();
                 this.bossIsAttacking();
             }
-        }, 800)
+        }, 1500)
 
         setStoppableIntervall(() => {
             if (!this.animationPlayed) {
                 slide.play();
                 this.bossIsSlidingIn();
             }
-        }, 100)
+        }, 50)
 
         setStoppableIntervall(() => {
             if ((!this.state.dead) && (!this.state.hurted) && (!this.state.attack)) {
                 runBoss.play();
                 this.bossIsRunning();
             }
-        }, 600)
+        }, 650)
     }
+
+
+
 
 
     bossIsDead() {
@@ -193,31 +196,35 @@ class Endboss extends MoveableObject {
     }
 
     bossIsAttacking() {
+        this.offset.left = 50
         this.playAnimation(this.images_Slashing);
     }
 
     bossIsSlidingIn() {
         this.playAnimation(this.images_SLIDING);
-        this.x -= 25
-        if (this.x < 3050) {
-            this.x = 3050;
+        this.x -= 30
+        if (this.x < 3030) {
+            this.x = 3030;
             this.animationPlayed = true;
         }
     }
 
     bossIsRunning() {
+        this.offset.left = 175;
         this.moveLeft();
         this.playAnimation(this.images_running);
-        this.dontRunThru();
+        if (world.character.x < 3000) {
+            this.dontRunThru();
+        }
     }
 
 
     checkDistance() {
-        this.offset.left = 50
+        // this.offset.left = 50
         let character = world.character.x;
         let endboss = this.x;
         let gap = endboss - character;
-        if (gap < 10 && gap > -200){
+        if (gap < 10 && gap > -200) {
             this.state.attack = true;
             return true
         } else {

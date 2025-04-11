@@ -3,7 +3,7 @@
  function initLvl1(){
     level1 = new Level(
         [
-            // new Endboss(),
+            new Endboss(),
             // new SmallChicken(),
             // new SmallChicken(),
             // new SmallChicken(),
