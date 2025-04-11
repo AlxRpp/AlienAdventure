@@ -58,19 +58,19 @@ class World {
     addObjectToCanvas(object) {
         object.forEach(movableObject => {
             this.addItemToCanvas(movableObject);
-            movableObject.drawFrame(this.ctx)
-            movableObject.drawOffsets(this.ctx)
+            // movableObject.drawFrame(this.ctx)
+            // movableObject.drawOffsets(this.ctx)
         })
     }
 
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
-            movableOBJ.drawFrame(this.ctx)
-            movableOBJ.drawOffsets(this.ctx)
+            //  movableOBJ.drawFrame(this.ctx)
+            // movableOBJ.drawOffsets(this.ctx)
             movableOBJ.mirroredImage(this.ctx);
         } else {
-            movableOBJ.drawFrame(this.ctx)
-            movableOBJ.drawOffsets(this.ctx)
+            // movableOBJ.drawFrame(this.ctx)
+            // movableOBJ.drawOffsets(this.ctx)
             movableOBJ.draw(this.ctx)
         }
     }
@@ -93,7 +93,7 @@ class World {
     charakterEnemyCollision() {
         this.level.enemies.forEach((enemy, index) => {
             if (this.character.isColliding(enemy)) {
-                this.jumpCollisionEnemy(enemy,index)
+                this.jumpCollisionEnemy(enemy, index)
                 if (!enemy.enemyDead) {
                     this.character.hit();
                     this.statusbar.setPercentage(this.character.energy);
@@ -101,8 +101,8 @@ class World {
             }
         });
     }
-    
-    jumpCollisionEnemy(enemy,index){
+
+    jumpCollisionEnemy(enemy, index) {
         let tolerance = 50;
         if (this.character.speedY < 0 &&
             this.character.y + this.character.height <= enemy.y + enemy.offset.top + tolerance) {
