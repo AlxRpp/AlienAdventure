@@ -21,7 +21,7 @@ class MoveableObject extends DrawableObject {
         } else {
             this.lastHit = new Date().getTime();
         }
-    }
+    } 
 
     isDead() {
         return this.energy == 0;
@@ -61,7 +61,7 @@ class MoveableObject extends DrawableObject {
 
     jump() {
          jump.play();
-        this.speedY = 22;
+        this.speedY = 20;
     }
 
     playAnimation(images) {

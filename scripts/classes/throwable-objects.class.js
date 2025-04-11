@@ -26,7 +26,7 @@ class ThrowableObject extends MoveableObject {
         this.width = 60;
         this.runLeft = runOtherDirection;
         this.throw()
-        this.throwLeft
+        // this.throwLeft
     }
 
 

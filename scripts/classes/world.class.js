@@ -229,18 +229,17 @@ class World {
     }
 
     splashBottle(bottle) {
+        let bottleX = bottle.x;
+ 
         if (bottle.splashed) {
             return
         }
-
         this.splashIntervall = setStoppableIntervall(() => {
             if (bottle.y > 360) {
                 bottle.y = 360;
-
+                bottle.x = bottleX
                 bottle.playAnimation(bottle.images_BottleSplash);
                 bottleBreak.play();
-
-
                 clearInterval(this.splashIntervall)
                 setTimeout(() => {
                     let index = this.level.throwableObjects.indexOf(bottle);
