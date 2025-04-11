@@ -63,9 +63,9 @@ function setAudioSettings() {
 function muteAllSounds() {
     let settings = localStorage.getItem('audioEnabled');
     if (settings === 'true') {
-        setBorder();
+        disableBorder();
     } else {
-        setBorder();
+        enableBorder();
     }
     allAudios.forEach(audio => {
         audio.muted = !audio.muted
@@ -73,7 +73,22 @@ function muteAllSounds() {
 }
 
 
-function setBorder() {
+function enableBorder() {
+    const topIcon = document.getElementById('volumeTop')
+    const bottemIcon = document.getElementById('volumeBottom')
+    const icon = document.getElementById('volume');
+    const iconDesktop = document.getElementById('volumeDesk');
+    const mobileIcon = document.getElementById('mobileIcon');
+
+    icon.src = './assets/images/volume_off.png';
+    iconDesktop.src = './assets/images/volume_off.png'
+    topIcon.classList.add('border');
+    bottemIcon.classList.add('border');
+    mobileIcon.classList.add('border');
+}
+
+
+function disableBorder() {
     const topIcon = document.getElementById('volumeTop')
     const bottemIcon = document.getElementById('volumeBottom')
     const icon = document.getElementById('volume');
@@ -82,7 +97,20 @@ function setBorder() {
 
     icon.src = './assets/images/volume_up.png';
     iconDesktop.src = './assets/images/volume_up.png';
-    topIcon.classList.toggle('border');
-    bottemIcon.classList.toggle('border');
-    mobileIcon.classList.toggle('border');
+    topIcon.classList.remove('border');
+    bottemIcon.classList.remove('border');
+    mobileIcon.classList.remove('border');
+}
+
+function changeSoundButton(){
+    let btn = document.getElementById('volumeBottom')
+    if (btn.classList.contains('border')) {
+        btn.innerText = 'Sound enabled'
+        btn.style.color = "black"
+
+    } else{
+        btn.innerText = 'Sound disabled'
+        btn.style.color = "white"
+    }
+    setAudioSettings();
 }
