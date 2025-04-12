@@ -62,14 +62,22 @@ function setAudioSettings() {
 
 function muteAllSounds() {
     let settings = localStorage.getItem('audioEnabled');
+    if (settings === null ) {
+        return
+    }
     if (settings === 'true') {
         disableBorder();
+        // changeSoundButton();
+        allAudios.forEach(audio => {
+            audio.muted = false})
     } else {
         enableBorder();
+        // changeSoundButton();
+        allAudios.forEach(audio => {
+            audio.muted = true})
     }
-    allAudios.forEach(audio => {
-        audio.muted = !audio.muted
-    });
+         changeSoundButton();
+    
 }
 
 
@@ -104,13 +112,11 @@ function disableBorder() {
 
 function changeSoundButton(){
     let btn = document.getElementById('volumeBottom')
-    if (btn.classList.contains('border')) {
+    if (!btn.classList.contains('border')) {
         btn.innerText = 'Sound enabled'
         btn.style.color = "black"
-
     } else{
         btn.innerText = 'Sound disabled'
         btn.style.color = "white"
     }
-    setAudioSettings();
 }

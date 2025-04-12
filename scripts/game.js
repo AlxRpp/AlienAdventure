@@ -140,13 +140,13 @@ function stopAllAudio() {
     })
 }
 
-function resetGame(){
+function resetGame() {
     const endScreen = document.getElementById('endScreen')
     endScreen.classList.add('d-none');
     init();
 }
 
-function getFinalImg(){
+function getFinalImg() {
     let deadBoss = world.level.enemies[0].state.dead;
     let gameover = document.getElementById('gameOver');
     let win = document.getElementById('win');
@@ -154,26 +154,27 @@ function getFinalImg(){
         gameover.classList.add('d-none');
         win.classList.remove('d-none');
 
-    } else{
+    } else {
         gameover.classList.remove('d-none');
         win.classList.add('d-none');
     }
 }
 
 
-function removeFinalImg(){
-    setTimeout(()=>{
+function removeFinalImg() {
+    setTimeout(() => {
         let gameover = document.getElementById('gameOver');
         let win = document.getElementById('win');
         win.classList.add('d-none');
         gameover.classList.add('d-none');
-    },1000)
-
-
-}
-
-function saveSoundSettings(){
-       localStorage.setItem('audioEnabled', 'true')
+    }, 1000)
 }
 
 
+function loadSoundSettings() {
+    let storage = localStorage.getItem('audioEnabled')
+    if (!storage) {
+        localStorage.setItem('audioEnabled', 'true')
+    }
+    muteAllSounds();
+}

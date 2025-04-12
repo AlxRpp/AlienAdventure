@@ -33,7 +33,7 @@
     <script src="./scripts/game.js"></script>
 </head>
 
-<body onload="saveSoundSettings()" onclick="closeImpressum()">
+<body onload="loadSoundSettings()" onclick="closeImpressum()">
 
     <div class="headline">
         <div class="placeholder"></div>
@@ -69,7 +69,7 @@
 
     <div class="startScreen" id="startscreen">
         <div class="buttonSection">
-            <button id="volumeBottom" onclick="changeSoundButton()" class="button legal">Mute Sounds</button>
+            <button id="volumeBottom" onclick="setAudioSettings()" class="button legal">Sound enabled</button>
             <button onclick="startGame()" class="button">Start Game</button>
             <button onclick="openImpressum()" class="button legal">Legal notice</button>
         </div>
