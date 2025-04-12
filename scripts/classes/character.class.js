@@ -12,6 +12,7 @@ class Character extends MoveableObject {
     };
     idleCounter = 0
 
+
     images_Walking = [
         './assets/images/charakter/run/green__0012_run_1.png',
         './assets/images/charakter/run/green__0013_run_2.png',
@@ -47,7 +48,8 @@ class Character extends MoveableObject {
 
 
     constructor() {
-        super().loadImage('./assets/images/charakter/run/green__0012_run_1.png')
+
+        super().loadImage(this.images_idle[0])
         this.loadImages(this.images_Walking);
         this.loadImages(this.images_jumping);
         this.loadImages(this.images_dead);
@@ -62,7 +64,6 @@ class Character extends MoveableObject {
         this.movement();
         this.status();
     }
-
 
     movement() {
         setStoppableIntervall(() => {
@@ -81,40 +82,6 @@ class Character extends MoveableObject {
             this.world.camera_x = -this.x + 75;
         }, 1000 / 60)
     }
-
-
-    // status() {
-    //     setInterval(() => {
-    //         if (this.isDead()) {
-    //             clearTimeout(this.idleTimeout);
-    //             gameOver.play();
-    //             this.playAnimation(this.images_dead);
-    //         } else if (this.isHurt()) {
-    //             clearTimeout(this.idleTimeout);
-    //             hurtCharacter.play();
-    //             this.playAnimation(this.images_hurt);
-    //         } else if (this.isAboveGround()) {
-    //             clearTimeout(this.idleTimeout);
-    //             this.playAnimation(this.images_jumping);
-    //         } else if (this.world.keyboard.right || this.world.keyboard.left) {
-    //             clearTimeout(this.idleTimeout);
-    //             runCharacter.play();
-    //             this.playAnimation(this.images_Walking);
-    //         } else {
-    //             if (!this.idleTimeout) {
-    //                 this.idleTimeout = setTimeout(() => {
-    //                     // this.idleCharacter();
-    //                     this.playAnimation(this.images_idle)
-    //                 }, 2000)
-    //             }
-
-    //         }
-    //     }, 100);
-
-    // }
-
-    // }
-
 
     status() {
         setStoppableIntervall(() => {
@@ -153,10 +120,14 @@ class Character extends MoveableObject {
         }, 100)
 
         setStoppableIntervall(() => {
-                this.idleCharacter();
+            this.idleCharacter();
         }, 225)
-    }
 
+        setStoppableIntervall(() => {
+            this.doNothing();
+        }, 50);
+
+    }
 
 
     idleCharacter() {
@@ -165,7 +136,19 @@ class Character extends MoveableObject {
             if (this.idleCounter >= 450) {
                 this.playAnimation(this.images_idle);
             }
-            
+
         }
     }
+
+    doNothing() {
+        if (!this.isAboveGround() &&
+            !this.world.keyboard.right &&
+            !this.world.keyboard.left &&
+            !this.world.keyboard.space) 
+            {
+            this.loadImage(this.images_idle[0]);
+            console.log("bild laden");
+        }
+    }
+
 }

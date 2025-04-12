@@ -195,7 +195,6 @@ class World {
         }
         // this.splashBottle(thrownBottle);
         this.bottleEnemyCollision(thrownBottle);
-
     };
 
     bottleEnemyCollision(thrownBottle) {
@@ -230,13 +229,13 @@ class World {
 
     splashBottle(bottle) {
         let bottleX = bottle.x;
- 
+
         if (bottle.splashed) {
             return
         }
         this.splashIntervall = setStoppableIntervall(() => {
-            if (bottle.y > 360) {
-                bottle.y = 360;
+            if (bottle.y > 350) {
+                bottle.y = 350;
                 bottle.x = bottleX
                 bottle.playAnimation(bottle.images_BottleSplash);
                 bottleBreak.play();
@@ -246,9 +245,9 @@ class World {
                     if (index > -1) {
                         this.level.throwableObjects.splice(index, 1)
                     }
-                }, 200)
+                }, 100)
             }
-        }, 50)
+        }, 80)
     };
 
     animateEndboss() {
