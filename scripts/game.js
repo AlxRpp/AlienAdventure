@@ -117,12 +117,12 @@ function touchButton() {
 function stopGame() {
     const screen = document.getElementById('endScreen')
     intervallIds.forEach(clearInterval)
+    getFinalImg();
     setTimeout(() => {
-        screen.classList.remove('d-none');
-        getFinalImg();
-        stopAllAudio();
         removeFinalImg();
-    }, 1000);
+        stopAllAudio();
+        screen.classList.remove('d-none');
+    }, 3000);
 }
 
 function goToStartScrren() {
@@ -146,28 +146,40 @@ function resetGame() {
     init();
 }
 
+// function getFinalImg() {
+//     let deadBoss = world.level.enemies[0].state.dead;
+//     let gameover = document.getElementById('gameOver');
+//     let win = document.getElementById('win');
+//     if (deadBoss) {
+//         gameover.classList.add('d-none');
+//         win.classList.remove('d-none');
+
+//     } else {
+//         gameover.classList.remove('d-none');
+//         win.classList.add('d-none');
+//     }
+// }
+
+
 function getFinalImg() {
     let deadBoss = world.level.enemies[0].state.dead;
     let gameover = document.getElementById('gameOver');
     let win = document.getElementById('win');
     if (deadBoss) {
-        gameover.classList.add('d-none');
+        // gameover.classList.add('d-none');
         win.classList.remove('d-none');
 
     } else {
         gameover.classList.remove('d-none');
-        win.classList.add('d-none');
+        // win.classList.add('d-none');
     }
 }
 
-
 function removeFinalImg() {
-    setTimeout(() => {
-        let gameover = document.getElementById('gameOver');
-        let win = document.getElementById('win');
-        win.classList.add('d-none');
-        gameover.classList.add('d-none');
-    }, 1000)
+    let gameover = document.getElementById('gameOver');
+    let win = document.getElementById('win');
+    win.classList.add('d-none');
+    gameover.classList.add('d-none');
 }
 
 

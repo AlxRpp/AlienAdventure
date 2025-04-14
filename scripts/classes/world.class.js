@@ -103,7 +103,7 @@ class World {
     }
 
     jumpCollisionEnemy(enemy, index) {
-        let tolerance = 65;
+        let tolerance = 55;
         if (this.character.speedY < 0 &&
             this.character.y + this.character.height <= enemy.y + enemy.offset.top + tolerance) {
             if (enemy instanceof SmallChicken) {
