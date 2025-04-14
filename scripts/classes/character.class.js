@@ -12,7 +12,6 @@ class Character extends MoveableObject {
     };
     idleCounter = 0;
 
-    // startFrame = this.loadImage(this.images_idle[0]);
 
     images_Walking = [
         './assets/images/charakter/run/green__0012_run_1.png',
@@ -22,6 +21,15 @@ class Character extends MoveableObject {
         './assets/images/charakter/run/green__0016_run_5.png',
         './assets/images/charakter/run/green__0017_run_6.png',
     ];
+    // images_Walking = [
+    //    './assets/images/charakter/walk/green__0006_walk_1.png',
+    //    './assets/images/charakter/walk/green__0007_walk_2.png',
+    //    './assets/images/charakter/walk/green__0008_walk_3.png',
+    //    './assets/images/charakter/walk/green__0009_walk_4.png',
+    //    './assets/images/charakter/walk/green__0010_walk_5.png',
+    //    './assets/images/charakter/walk/green__0011_walk_6.png',
+
+    // ];
     images_jumping = [
         'assets/images/charakter/jump/green__0027_jump_1.png',
         'assets/images/charakter/jump/green__0028_jump_2.png',
