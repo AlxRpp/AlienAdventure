@@ -10,8 +10,9 @@ class Character extends MoveableObject {
         right: 0,
         bottom: 0
     };
-    idleCounter = 0
+    idleCounter = 0;
 
+    // startFrame = this.loadImage(this.images_idle[0]);
 
     images_Walking = [
         './assets/images/charakter/run/green__0012_run_1.png',
@@ -123,32 +124,23 @@ class Character extends MoveableObject {
             this.idleCharacter();
         }, 225)
 
-        setStoppableIntervall(() => {
-            this.doNothing();
-        }, 50);
-
     }
-
 
     idleCharacter() {
         if (!this.isAboveGround()) {
             this.idleCounter += 25
-            if (this.idleCounter >= 450) {
-                this.playAnimation(this.images_idle);
+            if (this.idleCounter >= 25 && this.idleCounter < 50) {
+                const currentImagePath = this.images_idle[0];
+                if (this.img !== this.imageChache[currentImagePath]) {
+                    this.loadImage(currentImagePath);
+                }
             }
-
+            if (!this.isAboveGround()) {
+                this.idleCounter += 25
+                if (this.idleCounter >= 450) {
+                    this.playAnimation(this.images_idle);
+                }
+            }
         }
     }
-
-    doNothing() {
-        if (!this.isAboveGround() &&
-            !this.world.keyboard.right &&
-            !this.world.keyboard.left &&
-            !this.world.keyboard.space) 
-            {
-            this.loadImage(this.images_idle[0]);
-            console.log("bild laden");
-        }
-    }
-
 }
