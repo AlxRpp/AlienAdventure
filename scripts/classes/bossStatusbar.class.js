@@ -1,3 +1,6 @@
+/**
+ * Statusbar for the Endboss
+ */
 class BossStatusbar extends DrawableObject{
     images = [
         './assets/images/7_statusbars/Endboss/0.png',
@@ -22,12 +25,23 @@ class BossStatusbar extends DrawableObject{
         this.height = 60;
     }
 
+    /**
+     * sets the percentage in the Statusbar
+     * 
+     * @param {number} percentage in the Statusbar
+     */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.images[this.resolveImageIndex(percentage)];
         this.img = this.imageChache[path];
     }
 
+    /**
+     * resolved the Percentage to a number to return
+     * 
+     * @param {number} percentage 
+     * @returns a number between 0-5 to load the right Image
+     */
     resolveImageIndex(percentage){
         if (percentage >= 100) {
             return 5

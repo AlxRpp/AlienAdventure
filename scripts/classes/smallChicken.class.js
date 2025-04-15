@@ -1,3 +1,6 @@
+/**
+ * Class for the second type of Enemies
+ */
 class SmallChicken extends MoveableObject {
     y = 400;
     height = 50;
@@ -13,7 +16,7 @@ class SmallChicken extends MoveableObject {
         'assets/images/enemys/chicken_small/1_walk/2_w.png',
         'assets/images/enemys/chicken_small/1_walk/3_w.png',
 
-        
+
     ];
     images_Dead = 'assets/images/enemys/chicken_small/2_dead/dead.png';
     images_Empty = '';
@@ -26,7 +29,9 @@ class SmallChicken extends MoveableObject {
         this.animate();
     }
 
-
+    /**
+     * This method gets started by the constructor and animate the enemies
+     */
     animate() {
         this.MoveIntervall = setStoppableIntervall(() => {
             this.moveLeft();
@@ -37,7 +42,10 @@ class SmallChicken extends MoveableObject {
         }, 30);
     }
 
-    stopAnimation(){
+    /**
+    * this method stops the animation from the current enemy when it´s collided with the Character or Bottle
+    */
+    stopAnimation() {
         clearInterval(this.MoveIntervall);
         clearInterval(this.AnimateIntervall);
     }

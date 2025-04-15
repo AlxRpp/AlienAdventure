@@ -1,3 +1,6 @@
+/**
+ * Class for draw the collectable Coins
+ */
 class Coins extends MoveableObject {
     width = 50;
     height = 50;
@@ -6,7 +9,7 @@ class Coins extends MoveableObject {
         'assets/images/8_coin/coin_2.png',
     ];
 
-    
+
     constructor() {
         super().loadImage('assets/images/8_coin/coin_1.png');
         this.loadImages(this.images_Coins);
@@ -15,7 +18,9 @@ class Coins extends MoveableObject {
         this.animate();
     }
 
-
+    /**
+     * animate the collectable coins
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.images_Coins);

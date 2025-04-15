@@ -1,24 +1,12 @@
  let level1 ;
 
+ /**
+  * this level includ´s all objects to draw for the level 1
+  */
  function initLvl1(){
     level1 = new Level(
         [
             new Endboss(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new SmallChicken(),
-            // new Chicken(),
-            // new Chicken(),
-            // new Chicken(),
-            // new Chicken(),
-            // new Chicken(),
-            // new Chicken(),
-
-
             new Chicken(),
             new SmallChicken(),
             new Chicken(),
@@ -33,6 +21,12 @@
             new SmallChicken()
         ],
         [
+            new Clouds('./assets/images/background/4_clouds/1.png'),
+            new Clouds('./assets/images/background/4_clouds/1.png'),
+            new Clouds('./assets/images/background/4_clouds/1.png'),
+            new Clouds('./assets/images/background/4_clouds/1.png'),
+            new Clouds('./assets/images/background/4_clouds/1.png'),
+            new Clouds('./assets/images/background/4_clouds/1.png'),
             new Clouds('./assets/images/background/4_clouds/1.png'),
         ],
         [

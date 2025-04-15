@@ -1,5 +1,4 @@
 class World {
-
     ctx;
     canvas;
     character = new Character();
@@ -25,10 +24,16 @@ class World {
         this.run();
     }
 
+    /**
+     * set the current world to -> this.
+     */
     setWorld() {
         this.character.world = this;
     }
 
+    /**
+     * draw all items and objects to the canvas
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -55,6 +60,10 @@ class World {
         })
     }
 
+    /**
+     * add a moveableObject to the draw method
+     * @param {object} object 
+     */
     addObjectToCanvas(object) {
         object.forEach(movableObject => {
             this.addItemToCanvas(movableObject);
@@ -63,6 +72,10 @@ class World {
         })
     }
 
+    /**
+     * add a single Item to the draw method
+     * @param {*} movableOBJ 
+     */
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
             //  movableOBJ.drawFrame(this.ctx)
@@ -75,7 +88,9 @@ class World {
         }
     }
 
-
+    /**
+     * the constructor runs the method, this method checks in a intervall if is there a collison, a throwable Object or a Endboss near by 
+     */
     run() {
         setStoppableIntervall(() => {
             this.checkCollisions();
@@ -84,23 +99,19 @@ class World {
         }, 100)
     }
 
+    /**
+     *check all types of a collision 
+     */
     checkCollisions() {
         this.charakterEnemyCollision();
         this.characterBottleCollision();
         this.characterCoinCollision();
     }
 
+    /**
+     * check if the character is collided with a enemy
+     */
     charakterEnemyCollision() {
-        // this.level.enemies.forEach((enemy, index) => {
-        //     if (this.character.isColliding(enemy)) {
-        //         this.jumpCollisionEnemy(enemy, index)
-        //         if (!enemy.enemyDead) {
-        //             this.character.hit();
-        //             this.statusbar.setPercentage(this.character.energy);
-        //         }
-        //     }
-        // });
-
         for (let i = this.level.enemies.length - 1; i >= 0; i--) {
             let enemy = this.level.enemies[i];
             if (this.character.isColliding(enemy)) {
@@ -111,9 +122,11 @@ class World {
                 }
             }
         }
-        
     }
 
+       /**
+     * check if the character is collided with a enemy by a jump 
+     */
     jumpCollisionEnemy(enemy, index) {
         let tolerance = 55;
         if (this.character.speedY < 0 &&
@@ -128,6 +141,11 @@ class World {
         }
     }
 
+    /**
+     * kills a enemy and remove him from the canvas
+     * @param {Array} enemy 
+     * @param {indexOf} index 
+     */
     killEnemy(enemy, index) {
         if (this.character.isColliding(enemy)) {
             enemy.stopAnimation();
@@ -143,6 +161,9 @@ class World {
         }
     }
 
+    /**
+     * check if character collided with coins
+     */
     characterCoinCollision() {
         this.level.coins.forEach((coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -154,6 +175,9 @@ class World {
         });
     }
 
+     /**
+     * check if character collided with bottle
+     */
     characterBottleCollision() {
         if (this.amountBottle < 100) {
             this.level.bottles.forEach((bottle, index) => {
@@ -168,6 +192,9 @@ class World {
         }
     }
 
+    /**
+     * check are throwableObjects are avalaible
+     */
     checkThrownObjects() {
         this.level.throwableObjects.forEach((bottle) => {
             if (!bottle.splashed && bottle.y >= 360) {
@@ -179,6 +206,10 @@ class World {
         }
     }
 
+    /**
+     * throw the bottle in which direction the character is moving
+     * @returns the method when the gap between the last throw und current throw is smaller then 125ms
+     */
     throwObjects() {
         let now = Date.now();
         if (now - this.lastThrowTime < 125) {
@@ -188,15 +219,18 @@ class World {
         if (this.keyboard.d && this.character.otherDirection) {
             let thrownBottle = new ThrowableObject(this.character.x - 40, this.character.y - 30, true);
             this.throwBottle(thrownBottle);
-            //   this.bottleEnemyCollision(thrownBottle);
 
         } else if (this.keyboard.d) {
             let thrownBottle = new ThrowableObject(this.character.x + 40, this.character.y - 30, false);
             this.throwBottle(thrownBottle);
-            //  this.bottleEnemyCollision(thrownBottle);
         }
     }
 
+    /**
+     * updates the bottle StatusBar and throw a bottle
+     * 
+     * @param {*} thrownBottle 
+     */
     throwBottle(thrownBottle) {
         this.level.throwableObjects.push(thrownBottle);
         this.collectedBottles--;
@@ -205,19 +239,21 @@ class World {
         if (this.collectedBottles < 0) {
             this.collectedBottles = 0;
         }
-        // this.splashBottle(thrownBottle);
         this.bottleEnemyCollision(thrownBottle);
     };
 
+    /**
+     * checck if the bottle collided with a enemy 
+     * 
+     * @param {*} thrownBottle 
+     */
     bottleEnemyCollision(thrownBottle) {
         this.BotlleCollision = setStoppableIntervall(() => {
             this.level.throwableObjects.forEach((bottle) => {
                 this.level.enemies.forEach((enemy, index) => {
                     if (bottle.isColliding(enemy) && !bottle.splashed) {
                         bottle.splashed = true
-                        // clearInterval(this.BotlleCollision);
                         this.splashBottle(thrownBottle)
-                        // bottleBreak.play();
                         if (!(enemy instanceof Endboss)) {
                             this.hitEnemy(enemy, index)
                         } else {
@@ -229,6 +265,12 @@ class World {
         }, 100)
     };
 
+   /**
+     * kills a enemy and remove him from the canvas
+     * 
+     * @param {Array} enemy 
+     * @param {indexOf} index 
+     */
     hitEnemy(enemy, index) {
         enemy.stopAnimation();
         enemy.loadImage(enemy.images_Dead);
@@ -239,9 +281,14 @@ class World {
         }, 1000)
     }
 
+    /**
+     * runs the splash bottle Animation 
+     * 
+     * @param {*} bottle 
+     * @returns 
+     */
     splashBottle(bottle) {
         let bottleX = bottle.x;
-
         if (bottle.splashed) {
             return
         }
@@ -262,6 +309,9 @@ class World {
         }, 80)
     };
 
+    /**
+     * if character reach a certain point, the endboss gets animated 
+     */
     animateEndboss() {
         let x = this.character.x;
         if (x > 3000) {
@@ -270,6 +320,9 @@ class World {
         }
     }
 
+    /**
+     * add damage to the boss
+     */
     hurtEndboss() {
         this.level.enemies[0].state.hurted = true;
         this.level.enemies[0].takeDamage();

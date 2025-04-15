@@ -1,3 +1,6 @@
+/**
+ * Class for Background Template
+ */
 class Background extends MoveableObject {
     width = 1024;
     height = 480

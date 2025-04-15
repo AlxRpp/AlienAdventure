@@ -1,3 +1,6 @@
+/**
+ * this class render all the objects from the level1.js file
+ */
 class Level {
     enemies;
     clouds;

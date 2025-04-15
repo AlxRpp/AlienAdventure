@@ -1,3 +1,6 @@
+/**
+ * Class for the Character
+ */
 class Character extends MoveableObject {
     height = 125;
     width = 62.5;
@@ -11,7 +14,6 @@ class Character extends MoveableObject {
         bottom: 0
     };
     idleCounter = 0;
-
     gameOver = false
 
     images_Walking = [
@@ -22,15 +24,6 @@ class Character extends MoveableObject {
         './assets/images/charakter/run/green__0016_run_5.png',
         './assets/images/charakter/run/green__0017_run_6.png',
     ];
-    // images_Walking = [
-    //    './assets/images/charakter/walk/green__0006_walk_1.png',
-    //    './assets/images/charakter/walk/green__0007_walk_2.png',
-    //    './assets/images/charakter/walk/green__0008_walk_3.png',
-    //    './assets/images/charakter/walk/green__0009_walk_4.png',
-    //    './assets/images/charakter/walk/green__0010_walk_5.png',
-    //    './assets/images/charakter/walk/green__0011_walk_6.png',
-
-    // ];
     images_jumping = [
         'assets/images/charakter/jump/green__0027_jump_1.png',
         'assets/images/charakter/jump/green__0028_jump_2.png',
@@ -56,9 +49,7 @@ class Character extends MoveableObject {
         'assets/images/charakter/idle/green__0002_idle_3.png',
     ];
 
-
     constructor() {
-
         super().loadImage(this.images_idle[0])
         this.loadImages(this.images_Walking);
         this.loadImages(this.images_jumping);
@@ -69,12 +60,17 @@ class Character extends MoveableObject {
         this.animate();
     }
 
-
+/**
+ * this method get started with the Constructor and start two new Methods
+ */
     animate() {
         this.movement();
         this.status();
     }
 
+/**
+ * this methis check via Intervall if some of the movements are true and runs the animation 
+ */
     movement() {
         setStoppableIntervall(() => {
             if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
@@ -93,6 +89,9 @@ class Character extends MoveableObject {
         }, 1000 / 60)
     }
 
+    /**
+     * this method check´s via intervall the status fron the character, if one status is true the Animation gets loaded 
+     */
     status() {
         setStoppableIntervall(() => {
             if (this.isDead()) {
@@ -100,7 +99,6 @@ class Character extends MoveableObject {
                 gameOver.play();
                 this.stopMovement()
                 intervallIds.forEach(clearInterval)
-
                 this.playAnimation(this.images_dead);
                 setTimeout(() => {
                     stopGame();
@@ -139,6 +137,9 @@ class Character extends MoveableObject {
 
     }
 
+    /**
+     * this method count the time when the Character is doing nothing, after a while the idle Animation gets started 
+     */
     idleCharacter() {
         if (!this.isAboveGround()) {
             this.idleCounter += 25
@@ -155,13 +156,5 @@ class Character extends MoveableObject {
                 }
             }
         }
-    }
-
-    stopMovement(){
-        setStoppableIntervall(()=>{
-            this.world.keyboard.right = false;
-            this.world.keyboard.left = false;
-            this.world.keyboard.space = false;
-        },100)
     }
 }

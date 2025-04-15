@@ -35,7 +35,7 @@ let allAudios = [
 
 
 
-mainMusic.volume = .05;
+mainMusic.volume = .15;
 runCharacter.volume = .25;
 slash.volume = .2;
 runBoss.volume = .25;
@@ -48,6 +48,9 @@ slide.volume = .5;
 chicken.volume = .5;
 
 
+/**
+ * save the currentSoundSettings to the localStorage
+ */
 function setAudioSettings() {
     let settings = localStorage.getItem('audioEnabled');
 
@@ -59,7 +62,10 @@ function setAudioSettings() {
     muteAllSounds();
 }
 
-
+/**
+ * toggle all Sounds
+ * @returns closes the function when the localStorage is empty
+ */
 function muteAllSounds() {
     let settings = localStorage.getItem('audioEnabled');
     if (settings === null ) {
@@ -67,12 +73,10 @@ function muteAllSounds() {
     }
     if (settings === 'true') {
         disableBorder();
-        // changeSoundButton();
         allAudios.forEach(audio => {
             audio.muted = false})
     } else {
         enableBorder();
-        // changeSoundButton();
         allAudios.forEach(audio => {
             audio.muted = true})
     }
@@ -81,6 +85,9 @@ function muteAllSounds() {
 }
 
 
+/**
+ * show the border to all buttons and icons which are able to mute the sounds
+ */
 function enableBorder() {
     const topIcon = document.getElementById('volumeTop')
     const bottemIcon = document.getElementById('volumeBottom')
@@ -95,7 +102,9 @@ function enableBorder() {
     mobileIcon.classList.add('border');
 }
 
-
+/**
+ * remove the border to all buttons and icons which are able to mute the sounds
+ */
 function disableBorder() {
     const topIcon = document.getElementById('volumeTop')
     const bottemIcon = document.getElementById('volumeBottom')
@@ -110,6 +119,9 @@ function disableBorder() {
     mobileIcon.classList.remove('border');
 }
 
+/**
+ * UserFeedback for the muteButton
+ */
 function changeSoundButton(){
     let btn = document.getElementById('volumeBottom')
     if (!btn.classList.contains('border')) {

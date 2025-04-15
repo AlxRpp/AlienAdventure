@@ -1,3 +1,6 @@
+/**
+ * Class for the Enemies 
+ */
 class Chicken extends MoveableObject {
     y = 370;
     height = 120;
@@ -36,7 +39,9 @@ class Chicken extends MoveableObject {
         this.animate();
     }
 
-
+    /**
+     * This method gets started by the constructor and animate the enemies
+     */
     animate() {
         this.MoveIntervall = setStoppableIntervall(() => {
             this.moveLeft();
@@ -47,7 +52,10 @@ class Chicken extends MoveableObject {
         }, 30);
     }
 
-    stopAnimation(){
+    /**
+     * this method stops the animation from the current enemy when it´s collided with the Character or Bottle
+     */
+    stopAnimation() {
         clearInterval(this.MoveIntervall);
         clearInterval(this.AnimateIntervall);
     }

@@ -1,3 +1,6 @@
+/**
+ * class for all throwableObjects
+ */
 class ThrowableObject extends MoveableObject {
     runLeft;
 
@@ -27,10 +30,11 @@ class ThrowableObject extends MoveableObject {
         this.runLeft = runOtherDirection;
         this.acceleration = 1.1
         this.throw()
-        // this.throwLeft
     }
 
-
+    /**
+     * checks in which direction to throw the Object
+     */
     throw() {
         if (this.runLeft) {
             this.throwLeft();
@@ -40,7 +44,9 @@ class ThrowableObject extends MoveableObject {
     }
 
 
-
+    /**
+     * throw the object to the left
+     */
     throwLeft() {
         this.speedY = 21;
         this.applyGravitation();
@@ -50,6 +56,9 @@ class ThrowableObject extends MoveableObject {
         }, 32);
     }
 
+     /**
+     * throw the object to the right
+     */
     throwRight(){
         this.speedY = 21;
         this.applyGravitation();

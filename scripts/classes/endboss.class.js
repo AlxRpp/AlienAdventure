@@ -1,3 +1,6 @@
+/**
+ * Class for the Endboss
+ */
 class Endboss extends MoveableObject {
     y = 25;
     height = 525;
@@ -11,8 +14,6 @@ class Endboss extends MoveableObject {
     };
     speed = 1.5;
     bossEnergy = 100;
-
-
     animationPlayed = false;
     state = {
         attack: false,
@@ -21,7 +22,6 @@ class Endboss extends MoveableObject {
         dead: false,
         run: false,
     }
-
 
     images_IDLE = [
         'assets/images/Endboss/Idle Blinking/0_Elemental_Spirits_Idle Blinking_000.png',
@@ -120,6 +120,10 @@ class Endboss extends MoveableObject {
         this.x = 4000;
     }
 
+    /**
+     * this method gets started when character reaches certain point in the game.
+     * this method checks via Intervall witch status the Endboss have and runs the Animation 
+     */
     animate() {
         setStoppableIntervall(() => {
             if (this.state.dead) {
@@ -160,7 +164,9 @@ class Endboss extends MoveableObject {
 
 
 
-
+    /**
+     * Run animation for dead Endboss 
+     */
     bossIsDead() {
         this.playAnimation(this.images_DEAD);
         setTimeout(() => {
@@ -168,6 +174,9 @@ class Endboss extends MoveableObject {
         },1000)
     }
 
+    /**
+     * Run animation for hurted Endboss
+     */
     bossIsHurted() {
         this.playAnimation(this.images_HURT);
         setTimeout(() => {
@@ -175,11 +184,17 @@ class Endboss extends MoveableObject {
         }, 500)
     }
 
+    /**
+     * Run animation for the attacking Boss 
+     */
     bossIsAttacking() {
         this.offset.left = 50
         this.playAnimation(this.images_Slashing);
     }
 
+    /**
+     * Run animation for the Slide In
+     */
     bossIsSlidingIn() {
         this.playAnimation(this.images_SLIDING);
         this.x -= 30
@@ -189,6 +204,9 @@ class Endboss extends MoveableObject {
         }
     }
 
+    /**
+     * Run animation for the Running Boss
+     */
     bossIsRunning() {
         this.offset.left = 175;
         this.moveLeft();
@@ -199,8 +217,12 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * checks the Distance for the between character and boss, when the gap is small enough the boss attacks the character
+     * 
+     * @returns 
+     */
     checkDistance() {
-        // this.offset.left = 50
         let character = world.character.x;
         let endboss = this.x;
         let gap = endboss - character;
@@ -213,6 +235,9 @@ class Endboss extends MoveableObject {
         }
     }
 
+    /**
+     * the boss takes damage when he gets hitted 
+     */
     takeDamage() {
         this.bossEnergy -= 20;
         world.bossStatusbar.setPercentage(this.bossEnergy)
@@ -222,6 +247,9 @@ class Endboss extends MoveableObject {
         }
     }
 
+    /**
+     * the character cant run further than the Boss actually is
+     */
     dontRunThru() {
         let boss = this.x
         world.level.level_end_x = boss
