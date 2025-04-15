@@ -40,6 +40,10 @@ function setStoppableIntervall(fn, time) {
 
 
 window.addEventListener("keydown", (event) => {
+    if (world.character.gameOver) {
+        return
+    }
+
     if (event.keyCode == 39) {
         keyboard.right = true;
     }
@@ -56,6 +60,9 @@ window.addEventListener("keydown", (event) => {
 );
 
 window.addEventListener("keyup", (event) => {
+    if (world.character.gameOver) {
+        return
+    }
     if (event.keyCode == 39) {
         keyboard.right = false;
     }

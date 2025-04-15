@@ -12,6 +12,7 @@ class Character extends MoveableObject {
     };
     idleCounter = 0;
 
+    gameOver = false
 
     images_Walking = [
         './assets/images/charakter/run/green__0012_run_1.png',
@@ -95,13 +96,17 @@ class Character extends MoveableObject {
     status() {
         setStoppableIntervall(() => {
             if (this.isDead()) {
+                this.gameOver = true;
                 gameOver.play();
+                this.stopMovement()
+                intervallIds.forEach(clearInterval)
+
                 this.playAnimation(this.images_dead);
                 setTimeout(() => {
                     stopGame();
                 }, 1000);
             }
-        }, 100)
+        }, 200)
 
         setStoppableIntervall(() => {
             if (this.world.keyboard.right || this.world.keyboard.left) {
@@ -150,5 +155,13 @@ class Character extends MoveableObject {
                 }
             }
         }
+    }
+
+    stopMovement(){
+        setStoppableIntervall(()=>{
+            this.world.keyboard.right = false;
+            this.world.keyboard.left = false;
+            this.world.keyboard.space = false;
+        },100)
     }
 }
