@@ -97,7 +97,6 @@ class Character extends MoveableObject {
             if (this.isDead()) {
                 this.gameOver = true;
                 gameOver.play();
-                this.stopMovement()
                 intervallIds.forEach(clearInterval)
                 this.playAnimation(this.images_dead);
                 setTimeout(() => {
