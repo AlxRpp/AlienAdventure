@@ -120,35 +120,13 @@ class Endboss extends MoveableObject {
         this.x = 4000;
     }
 
-
-    // animate(){
-    //     setInterval(() => {
-    //         if (this.state.dead) {
-    //             win.play();
-    //             this.bossIsDead();
-    //         } else if (this.state.hurted) {
-    //             hurtBoss.play();
-    //             this.bossIsHurted();
-    //         } else if (this.checkDistance()) {
-    //             slash.play();
-    //             this.bossIsAttacking();
-    //         } else if (!this.animationPlayed) {
-    //             slide.play();
-    //             this.bossIsSlidingIn();
-    //         } else {
-    //             runBoss.play();
-    //             this.bossIsRunning();
-    //         }
-    //     }, 100);
-    // }
-
     animate() {
         setStoppableIntervall(() => {
             if (this.state.dead) {
                 win.play();
                 this.bossIsDead()
             }
-        }, 100)
+        },650)
 
         setStoppableIntervall(() => {
             if (this.state.hurted) {
@@ -185,7 +163,9 @@ class Endboss extends MoveableObject {
 
     bossIsDead() {
         this.playAnimation(this.images_DEAD);
-        stopGame();
+        setTimeout(() => {
+            stopGame();
+        },1000)
     }
 
     bossIsHurted() {

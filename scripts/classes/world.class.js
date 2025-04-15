@@ -91,15 +91,27 @@ class World {
     }
 
     charakterEnemyCollision() {
-        this.level.enemies.forEach((enemy, index) => {
+        // this.level.enemies.forEach((enemy, index) => {
+        //     if (this.character.isColliding(enemy)) {
+        //         this.jumpCollisionEnemy(enemy, index)
+        //         if (!enemy.enemyDead) {
+        //             this.character.hit();
+        //             this.statusbar.setPercentage(this.character.energy);
+        //         }
+        //     }
+        // });
+
+        for (let i = this.level.enemies.length - 1; i >= 0; i--) {
+            let enemy = this.level.enemies[i];
             if (this.character.isColliding(enemy)) {
-                this.jumpCollisionEnemy(enemy, index)
+                this.jumpCollisionEnemy(enemy, i);
                 if (!enemy.enemyDead) {
                     this.character.hit();
                     this.statusbar.setPercentage(this.character.energy);
                 }
             }
-        });
+        }
+        
     }
 
     jumpCollisionEnemy(enemy, index) {
