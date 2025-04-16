@@ -67,8 +67,6 @@ class World {
     addObjectToCanvas(object) {
         object.forEach(movableObject => {
             this.addItemToCanvas(movableObject);
-            // movableObject.drawFrame(this.ctx)
-            // movableObject.drawOffsets(this.ctx)
         })
     }
 
@@ -78,12 +76,8 @@ class World {
      */
     addItemToCanvas(movableOBJ) {
         if (movableOBJ.otherDirection) {
-            //  movableOBJ.drawFrame(this.ctx)
-            // movableOBJ.drawOffsets(this.ctx)
             movableOBJ.mirroredImage(this.ctx);
         } else {
-            // movableOBJ.drawFrame(this.ctx)
-            // movableOBJ.drawOffsets(this.ctx)
             movableOBJ.draw(this.ctx)
         }
     }

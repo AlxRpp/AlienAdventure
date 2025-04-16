@@ -160,7 +160,7 @@ class Character extends MoveableObject {
             }
             if (!this.isAboveGround()) {
                 this.idleCounter += 25
-                if (this.idleCounter >= 1500) {
+                if (this.idleCounter >= 450) {
                     this.playAnimation(this.images_idle);
                 }
             }

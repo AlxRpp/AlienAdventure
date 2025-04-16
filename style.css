@@ -15,6 +15,12 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    user-select: none;
+}
+
+#btnLeft, #btnRight, #btnSpace, #btnThrow {
+    -webkit-touch-callout: none; 
+    touch-action: none;
 }
 
 h1 {
@@ -48,7 +54,6 @@ canvas {
 .startScreen {
     width: 1024px;
     aspect-ratio: 16/7.5;
-    /* height: 480px; */
     border-radius: 16px;
     position: absolute;
     top: 50%;
