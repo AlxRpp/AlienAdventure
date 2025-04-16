@@ -132,7 +132,7 @@ class Character extends MoveableObject {
 
         setStoppableIntervall(() => {
             this.idleCharacter();
-        }, 225)
+        }, 400)
 
     }
 
@@ -150,7 +150,7 @@ class Character extends MoveableObject {
             }
             if (!this.isAboveGround()) {
                 this.idleCounter += 25
-                if (this.idleCounter >= 450) {
+                if (this.idleCounter >= 1500) {
                     this.playAnimation(this.images_idle);
                 }
             }
