@@ -93,6 +93,17 @@ class Character extends MoveableObject {
      * this method check´s via intervall the status fron the character, if one status is true the Animation gets loaded 
      */
     status() {
+        this.deadOrHurt();
+        this.jumpOrRun();
+        setStoppableIntervall(() => {
+            this.idleCharacter();
+        }, 400)
+    }
+
+    /**
+     * play´s the right animation for the current status of the character
+     */
+    deadOrHurt(){
         setStoppableIntervall(() => {
             if (this.isDead()) {
                 this.gameOver = true;
@@ -106,22 +117,6 @@ class Character extends MoveableObject {
         }, 200)
 
         setStoppableIntervall(() => {
-            if (this.world.keyboard.right || this.world.keyboard.left) {
-                this.idleCounter = 0;
-                runCharacter.play();
-                this.playAnimation(this.images_Walking);
-            }
-        }, 75)
-
-        setStoppableIntervall(() => {
-            if (this.isAboveGround()) {
-                this.idleCounter = 0;
-
-                this.playAnimation(this.images_jumping);
-            }
-        }, 125)
-
-        setStoppableIntervall(() => {
             if (this.isHurt()) {
                 this.idleCounter = 0;
 
@@ -129,11 +124,26 @@ class Character extends MoveableObject {
                 this.playAnimation(this.images_hurt);
             }
         }, 100)
+    }
+
+     /**
+     * play´s the right animation for the current status of the character
+     */
+    jumpOrRun(){
+        setStoppableIntervall(() => {
+            if (this.isAboveGround()) {
+                this.idleCounter = 0;
+                this.playAnimation(this.images_jumping);
+            }
+        }, 125)
 
         setStoppableIntervall(() => {
-            this.idleCharacter();
-        }, 400)
-
+            if (this.world.keyboard.right || this.world.keyboard.left) {
+                this.idleCounter = 0;
+                runCharacter.play();
+                this.playAnimation(this.images_Walking);
+            }
+        }, 75)
     }
 
     /**

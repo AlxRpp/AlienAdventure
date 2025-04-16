@@ -125,12 +125,26 @@ class Endboss extends MoveableObject {
      * this method checks via Intervall witch status the Endboss have and runs the Animation 
      */
     animate() {
+        this.deadOrHurt();
+        this.attackOrRun();
+        setStoppableIntervall(() => {
+            if (!this.animationPlayed) {
+                slide.play();
+                this.bossIsSlidingIn();
+            }
+        }, 50)
+    }
+
+    /**
+     * this method play´s the right animation either the dead or hurt animation
+     */
+    deadOrHurt() {
         setStoppableIntervall(() => {
             if (this.state.dead) {
                 win.play();
                 this.bossIsDead()
             }
-        },650)
+        }, 650)
 
         setStoppableIntervall(() => {
             if (this.state.hurted) {
@@ -138,20 +152,19 @@ class Endboss extends MoveableObject {
                 this.bossIsHurted();
             }
         }, 300)
+    }
 
+    /**
+     * this method play´s the right animation either the attack or run animation
+     * 
+     */
+    attackOrRun() {
         setStoppableIntervall(() => {
             if (this.checkDistance()) {
                 slash.play();
                 this.bossIsAttacking();
             }
         }, 1500)
-
-        setStoppableIntervall(() => {
-            if (!this.animationPlayed) {
-                slide.play();
-                this.bossIsSlidingIn();
-            }
-        }, 50)
 
         setStoppableIntervall(() => {
             if ((!this.state.dead) && (!this.state.hurted) && (!this.state.attack)) {
@@ -162,8 +175,6 @@ class Endboss extends MoveableObject {
     }
 
 
-
-
     /**
      * Run animation for dead Endboss 
      */
@@ -171,7 +182,7 @@ class Endboss extends MoveableObject {
         this.playAnimation(this.images_DEAD);
         setTimeout(() => {
             stopGame();
-        },1000)
+        }, 1000)
     }
 
     /**
