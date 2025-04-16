@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let intervallIds = [];
+let gameStarted = false
 
 /**
  * initialize the world
@@ -11,6 +12,8 @@ function init() {
     initLvl1();
     world = new World(canvas, keyboard);
     mainMusic.play();
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 };
 
 /**
@@ -55,7 +58,7 @@ function setStoppableIntervall(fn, time) {
 /**
  * checks which key is pressed down
  */
-window.addEventListener("keydown", (event) => {
+function handleKeyDown(event) {
     if (world.character.gameOver) {
         return
     }
@@ -72,13 +75,12 @@ window.addEventListener("keydown", (event) => {
     if (event.keyCode == 68) {
         keyboard.d = true;
     }
-}
-);
+};
 
 /**
  * noticed when the pressed key is not more pressed
  */
-window.addEventListener("keyup", (event) => {
+function handleKeyUp(event) {
     if (world.character.gameOver) {
         return
     }
@@ -94,8 +96,7 @@ window.addEventListener("keyup", (event) => {
     if (event.keyCode == 68) {
         keyboard.d = false;
     }
-}
-);
+};
 
 /**
  * mobilePanel for play the game in MobileDevices
