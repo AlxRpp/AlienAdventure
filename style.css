@@ -185,7 +185,8 @@ p {
 }
 
 .border{
-    border: 3px solid darkorange;
+ outline-offset: -2px;
+    outline: 3px solid darkorange;
 }
 
 .arrow img {
