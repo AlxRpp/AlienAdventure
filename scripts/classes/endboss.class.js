@@ -12,7 +12,7 @@ class Endboss extends MoveableObject {
         right: 0,
         bottom: 0
     };
-    speed = 1.5;
+    speed = 15;
     bossEnergy = 100;
     animationPlayed = false;
     state = {
@@ -158,7 +158,7 @@ class Endboss extends MoveableObject {
                 runBoss.play();
                 this.bossIsRunning();
             }
-        }, 650)
+        }, 550)
     }
 
 
